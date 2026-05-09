@@ -108,6 +108,18 @@ The setup installer is the recommended path for normal users. The portable zip i
 
 Note: early alpha installers may be unsigned. Windows SmartScreen can warn on unsigned apps until a code-signing certificate is added.
 
+## Security Note
+
+The `0.1.0-alpha` installer is unsigned. Windows may show an `Unknown publisher` or SmartScreen warning until PICAZHU is signed with an OV/EV code-signing certificate.
+
+For this release:
+
+- Verify downloads against `SHA256SUMS.txt`.
+- Scan the installer or portable zip with your antivirus before installing if your environment requires it.
+- The published `0.1.0-alpha` installer and portable zip were scanned locally with Microsoft Defender on May 9, 2026, and Defender reported no threats.
+
+Antivirus scans are a useful distribution check, but they are not a substitute for code signing. A signed installer is still required for a stronger public trust signal.
+
 ## Quick Start
 
 1. Launch PICAZHU.
