@@ -31,8 +31,8 @@ PICAZHU is now a working local-first Windows desktop media browser with:
 Published build output:
 
 - `publish/Picazhu.App-win-x64/Picazhu.App.exe`
-- `release/PICAZHU-Windows-Setup-0.1.0-alpha.exe`
-- `release/PICAZHU-Windows-portable-0.1.0-alpha.zip`
+- `release/PICAZHU-Windows-Setup-0.1.1-alpha.exe`
+- `release/PICAZHU-Windows-portable-0.1.1-alpha.zip`
 
 ## Milestones
 
@@ -517,6 +517,35 @@ Verification:
 Outcome:
 
 - the Windows app is ready to be reviewed as a new `picazhu-windows` GitHub repository, with binary release assets prepared separately for GitHub Releases instead of being committed to the source branch.
+
+### Milestone 26: Settings popup readability and release-pipeline hardening
+
+The settings popup still had layout risk from fixed-width cards and compact footer actions. Long LM Studio model names, provider status text, and action labels could become partially visible on smaller windows or different display scaling.
+
+Delivered:
+
+- rebuilt `SettingsWindow.xaml` into a full-width scrollable settings surface instead of fixed-width `WrapPanel` cards
+- added clear Workspace and AI Providers sections with label/control rows
+- added a local settings toggle style with a visible checked state instead of reusing filter-chip styling
+- made long provider/model/status text wrap safely
+- added a selected-model summary under the LM Studio model dropdown so long model IDs remain readable
+- expanded footer actions and added clear copy explaining that Close discards unsaved edits and Save applies immediately
+- preserved the existing premium dark-first visual language while reducing clipping risk
+- hardened `Stage-GitHubRepo.ps1` so it preserves an existing `.git` folder when refreshing the staged GitHub working tree
+- bumped the Windows alpha version to `0.1.1-alpha`
+
+Verification:
+
+- `dotnet build .\Picazhu.sln -c Release -m:1`
+- `dotnet test .\Picazhu.sln -c Release --no-build -m:1`
+- `dotnet publish .\app\Picazhu.App\Picazhu.App.csproj -c Release -r win-x64 --self-contained false -m:1 -o .\publish\Picazhu.App-win-x64 /p:DebugType=None /p:DebugSymbols=false`
+- published executable smoke test launched `PICAZHU` and reported `Responding = True`
+- `.\scripts\Build-WindowsRelease.ps1`
+- Microsoft Defender custom scan found no threats in the `0.1.1-alpha` installer or portable zip
+
+Outcome:
+
+- the settings popup is more robust for real user display scaling and restored-window sizes, especially around AI configuration and provider diagnostics.
 
 ## Lessons Learned
 

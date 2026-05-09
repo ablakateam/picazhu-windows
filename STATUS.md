@@ -2,7 +2,7 @@
 
 ## Current Build
 
-- Version: `0.1.0-alpha`
+- Version: `0.1.1-alpha`
 - Platform: Windows 10/11 x64
 - Framework: WPF on .NET 8
 - Release type: alpha, ready for controlled testing
@@ -16,6 +16,7 @@
 - Inno Setup native installer compiles.
 - Portable zip excludes debug `.pdb` files.
 - Clean GitHub source staging excludes build output, logs, local databases, screenshots, recordings, and temp files.
+- Settings popup layout has been refined so labels, model IDs, provider status, and footer actions remain readable instead of clipping.
 - HEIC support includes native WIC detection plus bundled libheif fallback.
 - Folder indexing supports recursive folders and ignores AppleDouble sidecars.
 - Media export copies selected originals.

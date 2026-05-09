@@ -8,8 +8,8 @@ PICAZHU for Windows should be distributed as:
 
 - GitHub repository: source code, docs, installer script, build scripts.
 - GitHub Release assets:
-  - `PICAZHU-Windows-Setup-0.1.0-alpha.exe`
-  - `PICAZHU-Windows-portable-0.1.0-alpha.zip`
+  - `PICAZHU-Windows-Setup-0.1.1-alpha.exe`
+  - `PICAZHU-Windows-portable-0.1.1-alpha.zip`
   - `SHA256SUMS.txt`
 
 Do not commit generated binaries, logs, screenshots, recordings, temp files, local databases, or app cache data to the source repository.

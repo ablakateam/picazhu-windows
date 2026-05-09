@@ -101,8 +101,8 @@ Current open AI areas:
 
 Download the latest Windows release from GitHub Releases:
 
-- `PICAZHU-Windows-Setup-0.1.0-alpha.exe`
-- `PICAZHU-Windows-portable-0.1.0-alpha.zip`
+- `PICAZHU-Windows-Setup-0.1.1-alpha.exe`
+- `PICAZHU-Windows-portable-0.1.1-alpha.zip`
 
 The setup installer is the recommended path for normal users. The portable zip is useful for testing.
 
@@ -110,13 +110,13 @@ Note: early alpha installers may be unsigned. Windows SmartScreen can warn on un
 
 ## Security Note
 
-The `0.1.0-alpha` installer is unsigned. Windows may show an `Unknown publisher` or SmartScreen warning until PICAZHU is signed with an OV/EV code-signing certificate.
+The `0.1.1-alpha` installer is unsigned. Windows may show an `Unknown publisher` or SmartScreen warning until PICAZHU is signed with an OV/EV code-signing certificate.
 
 For this release:
 
 - Verify downloads against `SHA256SUMS.txt`.
 - Scan the installer or portable zip with your antivirus before installing if your environment requires it.
-- The published `0.1.0-alpha` installer and portable zip were scanned locally with Microsoft Defender on May 9, 2026, and Defender reported no threats.
+- The published `0.1.1-alpha` installer and portable zip were scanned locally with Microsoft Defender on May 9, 2026, and Defender reported no threats.
 
 Antivirus scans are a useful distribution check, but they are not a substitute for code signing. A signed installer is still required for a stronger public trust signal.
 

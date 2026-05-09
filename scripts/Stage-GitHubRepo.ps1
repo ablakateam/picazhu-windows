@@ -14,10 +14,13 @@ else {
 }
 
 if (Test-Path $destinationPath) {
-    Remove-Item -LiteralPath $destinationPath -Recurse -Force
+    Get-ChildItem -LiteralPath $destinationPath -Force |
+        Where-Object { $_.Name -ne ".git" } |
+        Remove-Item -Recurse -Force
 }
-
-New-Item -ItemType Directory -Force -Path $destinationPath | Out-Null
+else {
+    New-Item -ItemType Directory -Force -Path $destinationPath | Out-Null
+}
 
 $topLevelFiles = @(
     ".gitattributes",
