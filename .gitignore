@@ -1,0 +1,43 @@
+# Build output
+bin/
+obj/
+**/bin/
+**/obj/
+**/*_wpftmp.csproj
+
+# Published/release payloads are generated locally and should be attached to GitHub Releases.
+publish/
+release/
+dist/
+*.zip
+*.msi
+*.msix
+*.appx
+*.exe
+
+# Local app data, diagnostics, and temporary files
+temp/
+*.log
+llm_logs.txt
+app-build-*.log
+*.db
+*.db-shm
+*.db-wal
+
+# Local screenshots/recordings/test artifacts
+Screenshot *.png
+Recording *.mp4
+EBOXLAB-CaseLens-Report.html
+
+# IDE/user files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
