@@ -37,6 +37,7 @@ foreach ($file in $topLevelFiles) {
 
 $directories = @(
     "app",
+    "docs",
     "installer",
     "scripts",
     "tools"

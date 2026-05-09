@@ -14,6 +14,16 @@ PICAZHU for Windows is the Windows desktop companion to the PICAZHU media browse
 
 Point it at a folder, scan subfolders, preview media, inspect metadata, find files by name or AI tags, and export selected originals for printing, sharing, or client delivery.
 
+## Screenshots
+
+![PICAZHU visual media library](docs/screenshots/picazhu-library-grid.png)
+
+The main workspace is built around a media-first gallery, folder navigation, live indexing status, optional AI status, and a right-side preview rail.
+
+![PICAZHU video preview and selection workflow](docs/screenshots/picazhu-video-preview.png)
+
+PICAZHU supports visual video cards, selected-media export, preview actions, metadata, diagnostics, and AI tag inspection from the same workspace.
+
 ## Why PICAZHU Exists
 
 Managing visual media should not feel like fighting a catalog system. PICAZHU is designed for photographers, videographers, creators, and anyone with large folders of images and clips who wants a fast, calm way to review files directly from the filesystem.
@@ -164,6 +174,7 @@ PICAZHU/
 ├── installer/            # Inno Setup installer definition
 ├── scripts/              # build, recovery, and release scripts
 ├── tools/                # developer utilities
+├── docs/screenshots      # public README screenshots
 └── docs/status files
 ```
 
