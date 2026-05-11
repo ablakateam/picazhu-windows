@@ -45,6 +45,9 @@ public sealed class AiRuntimeTests
     [Theory]
     [InlineData("qwen2.5-vl-7b-instruct", true)]
     [InlineData("llava-1.6", true)]
+    [InlineData("llama3.2-vision", true)]
+    [InlineData("gemma3", true)]
+    [InlineData("moondream", true)]
     [InlineData("qwen2.5-7b-instruct", false)]
     [InlineData("mistral-7b-instruct", false)]
     public void LmStudioProvider_VisionModelHeuristic_ShouldMatchExpectedValues(string modelId, bool expected)

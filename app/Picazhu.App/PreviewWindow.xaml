@@ -8,23 +8,23 @@
         MinWidth="720"
         MinHeight="560"
         WindowStartupLocation="CenterOwner"
-        Background="{StaticResource WindowBrush}"
-        Foreground="{StaticResource TextBrush}">
-    <Border Margin="12" Padding="16" CornerRadius="24" Background="{StaticResource WindowBackgroundBrush}">
+        Background="{DynamicResource WindowBrush}"
+        Foreground="{DynamicResource TextBrush}">
+    <Border Margin="12" Padding="16" CornerRadius="24" Background="{DynamicResource WindowBackgroundBrush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Border Background="{StaticResource PanelGlassBrush}"
-                    BorderBrush="{StaticResource ControlBorderBrush}"
+            <Border Background="{DynamicResource PanelGlassBrush}"
+                    BorderBrush="{DynamicResource ControlBorderBrush}"
                     BorderThickness="1"
                     CornerRadius="20"
                     Padding="16"
                     Margin="0,0,0,14">
                 <StackPanel Orientation="Horizontal">
-                    <Border Width="38" Height="38" CornerRadius="10" Background="{StaticResource AccentSoftBrush}" BorderBrush="{StaticResource AccentBrush}" BorderThickness="1" Margin="0,0,12,0">
+                    <Border Width="38" Height="38" CornerRadius="10" Background="{DynamicResource AccentSoftBrush}" BorderBrush="{DynamicResource AccentBrush}" BorderThickness="1" Margin="0,0,12,0">
                         <Image Source="pack://application:,,,/Assets/picazhulogo.png" Width="26" Height="26" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <StackPanel>
@@ -35,15 +35,15 @@
             </Border>
 
             <Border Grid.Row="1"
-                    Background="{StaticResource PanelGlassBrush}"
-                    BorderBrush="{StaticResource ControlBorderBrush}"
+                    Background="{DynamicResource PanelGlassBrush}"
+                    BorderBrush="{DynamicResource ControlBorderBrush}"
                     BorderThickness="1"
                     CornerRadius="24"
                     Padding="14"
-                    Effect="{StaticResource CardShadow}">
+                    Effect="{DynamicResource CardShadow}">
                 <Grid>
-                    <Border Background="{StaticResource PanelAltBrush}"
-                            BorderBrush="{StaticResource ControlBorderBrush}"
+                    <Border Background="{DynamicResource PanelAltBrush}"
+                            BorderBrush="{DynamicResource ControlBorderBrush}"
                             BorderThickness="1"
                             CornerRadius="18"
                             Padding="10">

@@ -49,6 +49,7 @@ public partial class App : Application
                 services.AddSingleton<IAiProvider, LmStudioProvider>();
                 services.AddSingleton<IAiProvider, OpenAiProvider>();
                 services.AddSingleton<IAiProvider, OllamaProvider>();
+                services.AddSingleton<IAiProvider, OllamaCloudProvider>();
                 services.AddSingleton<IndexingService>();
                 services.AddSingleton<IIndexingService>(provider => provider.GetRequiredService<IndexingService>());
                 services.AddSingleton<MainViewModel>();

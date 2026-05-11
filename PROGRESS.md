@@ -640,6 +640,100 @@ Treating a connected iPhone like a normal filesystem is risky. MTP paths, trust 
 
 The same iPhone camera library may not appear as `Internal Storage\DCIM`. On the tested device, Windows exposed folders such as `Internal Storage\202605_a`, so camera import must detect supported media-bearing camera folders, not only one hard-coded DCIM path.
 
+## Milestone: Settings and AI Provider Expansion
+
+Date: May 9, 2026
+
+### What Changed
+
+- Settings now opens immediately instead of waiting for AI provider network checks before the dialog appears.
+- The settings draft model now owns all editable provider values, so Close continues to discard unsaved changes and Save persists only the current draft.
+- AI provider selection now supports LM Studio, Ollama local, Ollama Cloud, and OpenAI as first-class options.
+- LM Studio remains supported through its OpenAI-compatible `/v1/chat/completions` path.
+- Ollama local and Ollama Cloud now use Ollama's `/api/chat` vision shape with base64 image arrays.
+- Ollama Cloud uses `https://ollama.com/api` style endpoints with bearer API-key authentication.
+- OpenAI now uses Chat Completions vision with data-url image input and JSON-oriented responses.
+- Provider status checks now run in parallel and populate model dropdowns for the configured providers.
+
+### Why It Matters
+
+- Settings is no longer perceived as slow or frozen when LM Studio, Ollama, OpenAI, or cloud endpoints are offline.
+- Provider labels now match real functionality instead of describing OpenAI and Ollama as future placeholders.
+- Users can choose the AI backend that fits their machine, privacy needs, and available API keys.
+- The AI kill switch remains meaningful: provider checks in Settings do not mean background image analysis is running.
+
+### Lessons Learned
+
+- Modal desktop settings windows must paint first and test external services second.
+- A provider dropdown is not enough; each backend needs endpoint, model, key, readiness, and failure text in the same workflow.
+- Local and cloud AI providers should share the same runtime gate but keep separate request formats and status diagnostics.
+- API keys are operationally necessary for cloud AI, but storing them in local settings needs to stay visible to the user until secure credential storage is added.
+
+## Milestone: Theme System QA and Light Mode Hardening
+
+Date: May 10, 2026
+
+### What Changed
+
+- Light and dark themes now expose the same semantic resource contract, including accent foregrounds, media overlays, badge colors, and theme-specific shadows.
+- The light palette was rebuilt around warm Windows-friendly surfaces, stronger text contrast, softer layering, and less muddy panel separation.
+- Shared WPF chrome was extended so tooltips, context menus, menu items, separators, progress bars, folder tree items, and expanders no longer fall back to generic system styling.
+- Remaining hard-coded app-level hex colors were removed from non-theme XAML; visual color values now live in theme dictionaries or semantic brushes.
+- Regression tests were added to enforce theme-key parity, core contrast thresholds, and the no-hard-coded-color rule for app XAML.
+
+### Why It Matters
+
+- Light mode is now treated as a first-class product surface instead of a partial recolor of dark mode.
+- Code-created UI such as media context menus now inherits PICAZHU styling instead of looking detached from the rest of the app.
+- Future UI work has guardrails: theme resources must stay complete and readable before the test suite passes.
+
+### Lessons Learned
+
+- WPF desktop apps need a complete control-style contract for both themes; changing only brushes leaves default controls exposed.
+- Light mode needs separate shadow and contrast tuning because dark-mode depth values feel heavy and unfinished on bright surfaces.
+- Automated checks cannot replace screenshot QA, but they catch the structural regressions that caused repeated theme inconsistencies.
+
+### Follow-up Fix
+
+Date: May 10, 2026
+
+- Dark-mode regression was traced to two issues: theme dictionaries were removed by exact URI matching only, and shared icon styling no longer supplied a safe default foreground.
+- Theme replacement now removes old light/dark dictionaries by normalized URI suffix, preventing a stale light dictionary from staying in the merged resources.
+- Icon styling was split into standalone icons and button icons. Standalone icons default to theme text color; icons inside buttons inherit the owning button foreground so primary, ghost, and toolbar buttons remain readable in both themes.
+
+### Second Follow-up Fix
+
+Date: May 10, 2026
+
+- Remaining theme-switch inconsistency was traced to theme-dependent brushes and effects being defined once in `App.xaml` and referenced with `StaticResource`.
+- Theme-owned brushes, gradients, and shadows now live directly inside `DarkTheme.xaml` and `LightTheme.xaml`.
+- App, main shell, settings, preview, and phone import XAML now resolve theme-owned brushes/effects with `DynamicResource`, so runtime theme changes replace the actual visual resources instead of reusing stale loaded objects.
+- A regression test now fails if theme-dependent brushes/effects are referenced with `StaticResource` in non-theme app XAML.
+
+## Milestone: 0.1.2 Alpha Theme Reliability Release
+
+Date: May 11, 2026
+
+### What Changed
+
+- Version bumped to `0.1.2-alpha` for a clean GitHub release boundary after the runtime theme-system fix.
+- README, status, and distribution docs were updated to describe the theme reliability work and new release assets.
+- Release packaging now targets `PICAZHU-Windows-Setup-0.1.2-alpha.exe` and `PICAZHU-Windows-portable-0.1.2-alpha.zip`.
+- Microsoft Defender scan found no threats in the generated `0.1.2-alpha` release folder on May 11, 2026.
+
+### Why It Matters
+
+- The theme fix is a user-visible quality improvement and should be traceable as a release, not silently folded into the previous alpha.
+- Future visual QA now has explicit guardrails: theme-owned resources belong in theme dictionaries and runtime UI must reference them dynamically.
+
+### Release Routine
+
+- Build and test before staging GitHub source.
+- Publish framework-dependent Windows x64 output.
+- Build native installer and portable zip.
+- Generate `SHA256SUMS.txt`.
+- Stage clean GitHub source and push from `release/github-picazhu-windows`.
+
 ## Known Open Areas
 
 These areas are improved but still not “finished”:
@@ -655,7 +749,8 @@ These areas are improved but still not “finished”:
   - better frame sampling strategy
   - optional more-than-two-frame analysis
   - stronger action/activity summaries
-- OpenAI and Ollama provider inference paths are still scaffolding compared to the new LM Studio path
+- OpenAI, Ollama, and Ollama Cloud inference paths need live QA with real user-owned keys, endpoints, and model catalogs
+- secure OS credential storage should replace local plaintext API-key settings before broad public release
 - iPhone import still needs real-device QA across locked, untrusted, low-storage, iCloud-placeholder, and very large DCIM scenarios
 
 ## How To Update This Log

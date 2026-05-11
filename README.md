@@ -51,6 +51,7 @@ PICAZHU indexes your real folders into a local SQLite catalog, generates thumbna
 - Search by file name, folder path, metadata, OCR text, and AI analysis text.
 - Filters for images, videos, recent files, large files, portrait, and landscape.
 - Responsive media-first shell for full-screen and restored windows.
+- Runtime light/dark theme switching with tested dynamic theme resources.
 
 ### Import and Export
 
@@ -80,7 +81,9 @@ Current implemented AI capabilities:
 
 - Runtime AI kill switch.
 - Provider status visibility in the header.
-- LM Studio local vision-model integration.
+- Settings-driven provider selection for LM Studio, Ollama, Ollama Cloud, and OpenAI vision.
+- Local LM Studio and Ollama visual tagging paths.
+- OpenAI and Ollama Cloud remote vision tagging paths when API keys are configured.
 - OCR extraction for searchable visible text.
 - Tags tab for selected media.
 - Visual analysis progress indicators.
@@ -88,21 +91,23 @@ Current implemented AI capabilities:
 Current open AI areas:
 
 - Embeddings and hybrid semantic ranking are not complete yet.
-- OpenAI/Ollama provider inference paths are not feature-complete compared with LM Studio.
+- Cloud/local provider paths need broader live QA across user-owned keys, endpoints, and model catalogs.
 
 ## Requirements
 
 - Windows 10 or Windows 11, x64.
 - .NET 8 Desktop Runtime for framework-dependent builds.
 - Optional: LM Studio with a vision-capable local model for AI tagging.
+- Optional: Ollama with a vision-capable local model such as `gemma3`, `llama3.2-vision`, or `llava`.
+- Optional: OpenAI API key or Ollama Cloud API key for remote vision tagging.
 - Optional: iPhone connected by USB, unlocked, and trusted for iPhone import.
 
 ## Install
 
 Download the latest Windows release from GitHub Releases:
 
-- `PICAZHU-Windows-Setup-0.1.1-alpha.exe`
-- `PICAZHU-Windows-portable-0.1.1-alpha.zip`
+- `PICAZHU-Windows-Setup-0.1.2-alpha.exe`
+- `PICAZHU-Windows-portable-0.1.2-alpha.zip`
 
 The setup installer is the recommended path for normal users. The portable zip is useful for testing.
 
@@ -110,13 +115,13 @@ Note: early alpha installers may be unsigned. Windows SmartScreen can warn on un
 
 ## Security Note
 
-The `0.1.1-alpha` installer is unsigned. Windows may show an `Unknown publisher` or SmartScreen warning until PICAZHU is signed with an OV/EV code-signing certificate.
+The `0.1.2-alpha` installer is unsigned. Windows may show an `Unknown publisher` or SmartScreen warning until PICAZHU is signed with an OV/EV code-signing certificate.
 
 For this release:
 
 - Verify downloads against `SHA256SUMS.txt`.
 - Scan the installer or portable zip with your antivirus before installing if your environment requires it.
-- The published `0.1.1-alpha` installer and portable zip were scanned locally with Microsoft Defender on May 9, 2026, and Defender reported no threats.
+- The published `0.1.2-alpha` release folder was scanned locally with Microsoft Defender on May 11, 2026, and Defender reported no threats.
 
 Antivirus scans are a useful distribution check, but they are not a substitute for code signing. A signed installer is still required for a stronger public trust signal.
 
@@ -222,6 +227,7 @@ Verified in the latest local build:
 - Portable release zip and SHA-256 checksums are generated.
 - iPhone import detects a real iPhone, scans camera folders, and downloads thumbnails.
 - HEIC fallback architecture is in place.
+- Runtime light/dark theme switching is backed by dynamic theme resources and regression tests.
 
 See:
 

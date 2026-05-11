@@ -1,6 +1,6 @@
 #define AppName "PICAZHU"
 #define AppPublisher "EBOXLAB"
-#define AppVersion "0.1.1-alpha"
+#define AppVersion "0.1.2-alpha"
 #define AppExeName "Picazhu.App.exe"
 #define PublishDir "..\publish\Picazhu.App-win-x64"
 #define OutputDir "..\release"

@@ -43,6 +43,8 @@ public partial class MainViewModel(
     public ObservableCollection<AiTagChipViewModel> TextTags { get; } = [];
     public ObservableCollection<string> LmStudioAvailableModels { get; } = [];
     public ObservableCollection<string> OllamaAvailableModels { get; } = [];
+    public ObservableCollection<string> OllamaCloudAvailableModels { get; } = [];
+    public ObservableCollection<string> OpenAiAvailableModels { get; } = [];
     public ObservableCollection<string> PinnedFolders { get; } = [];
     public ObservableCollection<string> RecentFolders { get; } = [];
     public ObservableCollection<SavedSearch> SavedSearches { get; } = [];
@@ -70,6 +72,9 @@ public partial class MainViewModel(
     [ObservableProperty] private string openAiVisionModel = string.Empty;
     [ObservableProperty] private string ollamaEndpoint = "http://localhost:11434";
     [ObservableProperty] private string ollamaVisionModel = string.Empty;
+    [ObservableProperty] private string ollamaCloudEndpoint = "https://ollama.com";
+    [ObservableProperty] private string ollamaCloudApiKeyPlaceholder = string.Empty;
+    [ObservableProperty] private string ollamaCloudVisionModel = string.Empty;
     [ObservableProperty] private string lmStudioEndpoint = "http://localhost:1234/v1";
     [ObservableProperty] private string lmStudioVisionModel = string.Empty;
     [ObservableProperty] private bool isIndexingActive;
@@ -89,7 +94,7 @@ public partial class MainViewModel(
     [ObservableProperty] private double aiIndexingProgressPercent;
     [ObservableProperty] private string aiIndexingProgressText = "AI indexing is off";
     [ObservableProperty] private string aiIndexingDetailText = "Enable AI features to allow visual analysis and semantic search.";
-    [ObservableProperty] private string aiProviderStatusText = "LM Studio: Not configured | Ollama: Not configured | OpenAI: Not configured";
+    [ObservableProperty] private string aiProviderStatusText = "LM Studio: Not configured | Ollama: Not configured | Ollama Cloud: Not configured | OpenAI: Not configured";
     [ObservableProperty] private bool isExporting;
     [ObservableProperty] private string exportProgressText = "No export in progress.";
     [ObservableProperty] private string exportDetailText = "Select media to export originals.";
@@ -127,6 +132,7 @@ public partial class MainViewModel(
     {
         "lmstudio" => string.IsNullOrWhiteSpace(LmStudioVisionModel) ? "No LM Studio model selected" : LmStudioVisionModel,
         "ollama" => string.IsNullOrWhiteSpace(OllamaVisionModel) ? "No Ollama model selected" : OllamaVisionModel,
+        "ollama-cloud" => string.IsNullOrWhiteSpace(OllamaCloudVisionModel) ? "No Ollama Cloud model selected" : OllamaCloudVisionModel,
         "openai" => string.IsNullOrWhiteSpace(OpenAiVisionModel) ? "No OpenAI model selected" : OpenAiVisionModel,
         _ => "No model selected"
     };
@@ -159,6 +165,9 @@ public partial class MainViewModel(
         OpenAiVisionModel = _settings.OpenAiVisionModel ?? string.Empty;
         OllamaEndpoint = _settings.OllamaEndpoint ?? "http://localhost:11434";
         OllamaVisionModel = _settings.OllamaVisionModel ?? string.Empty;
+        OllamaCloudEndpoint = _settings.OllamaCloudEndpoint ?? "https://ollama.com";
+        OllamaCloudApiKeyPlaceholder = _settings.OllamaCloudApiKeyPlaceholder ?? string.Empty;
+        OllamaCloudVisionModel = _settings.OllamaCloudVisionModel ?? string.Empty;
         LmStudioEndpoint = _settings.LmStudioEndpoint ?? "http://localhost:1234/v1";
         LmStudioVisionModel = _settings.LmStudioVisionModel ?? string.Empty;
         await aiIndexingService.InitializeAsync(_settings);
@@ -476,20 +485,47 @@ public partial class MainViewModel(
             ? 0
             : Math.Clamp((double)progress.CompletedItems / progress.TotalItems * 100d, 0d, 100d);
         AiProviderStatusText = statuses.Count == 0
-            ? "LM Studio: Not configured | Ollama: Not configured | OpenAI: Not configured"
+            ? "LM Studio: Not configured | Ollama: Not configured | Ollama Cloud: Not configured | OpenAI: Not configured"
             : string.Join(" | ", statuses.Select(status => $"{status.DisplayName}: {status.Summary}"));
         var lmStudioModels = statuses.FirstOrDefault(status => status.ProviderId == "lmstudio")?.AvailableModels ?? [];
         var ollamaModels = statuses.FirstOrDefault(status => status.ProviderId == "ollama")?.AvailableModels ?? [];
+        var ollamaCloudModels = statuses.FirstOrDefault(status => status.ProviderId == "ollama-cloud")?.AvailableModels ?? [];
+        var openAiModels = statuses.FirstOrDefault(status => status.ProviderId == "openai")?.AvailableModels ?? AiProviderModelCatalog.DefaultOpenAiVisionModels;
         Replace(LmStudioAvailableModels, lmStudioModels);
         Replace(OllamaAvailableModels, ollamaModels);
+        Replace(OllamaCloudAvailableModels, ollamaCloudModels);
+        Replace(OpenAiAvailableModels, openAiModels);
 
         if (string.IsNullOrWhiteSpace(LmStudioVisionModel))
         {
-            var detectedVisionModel = lmStudioModels.FirstOrDefault(LmStudioProvider.IsVisionModelId);
+            var detectedVisionModel = lmStudioModels.FirstOrDefault(AiProviderModelCatalog.IsVisionModelId);
             if (!string.IsNullOrWhiteSpace(detectedVisionModel))
             {
                 LmStudioVisionModel = detectedVisionModel;
             }
+        }
+
+        if (string.IsNullOrWhiteSpace(OllamaVisionModel))
+        {
+            var detectedVisionModel = ollamaModels.FirstOrDefault(AiProviderModelCatalog.IsVisionModelId);
+            if (!string.IsNullOrWhiteSpace(detectedVisionModel))
+            {
+                OllamaVisionModel = detectedVisionModel;
+            }
+        }
+
+        if (string.IsNullOrWhiteSpace(OllamaCloudVisionModel))
+        {
+            var detectedVisionModel = ollamaCloudModels.FirstOrDefault(AiProviderModelCatalog.IsVisionModelId);
+            if (!string.IsNullOrWhiteSpace(detectedVisionModel))
+            {
+                OllamaCloudVisionModel = detectedVisionModel;
+            }
+        }
+
+        if (string.IsNullOrWhiteSpace(OpenAiVisionModel))
+        {
+            OpenAiVisionModel = openAiModels.FirstOrDefault(AiProviderModelCatalog.IsOpenAiVisionModelId) ?? AiProviderModelCatalog.DefaultOpenAiVisionModel;
         }
 
         OnPropertyChanged(nameof(ActiveAiModelSummary));
@@ -779,6 +815,9 @@ public partial class MainViewModel(
             OpenAiVisionModel = string.IsNullOrWhiteSpace(OpenAiVisionModel) ? null : OpenAiVisionModel.Trim(),
             OllamaEndpoint = string.IsNullOrWhiteSpace(OllamaEndpoint) ? "http://localhost:11434" : OllamaEndpoint.Trim(),
             OllamaVisionModel = string.IsNullOrWhiteSpace(OllamaVisionModel) ? null : OllamaVisionModel.Trim(),
+            OllamaCloudEndpoint = string.IsNullOrWhiteSpace(OllamaCloudEndpoint) ? "https://ollama.com" : OllamaCloudEndpoint.Trim(),
+            OllamaCloudApiKeyPlaceholder = string.IsNullOrWhiteSpace(OllamaCloudApiKeyPlaceholder) ? null : OllamaCloudApiKeyPlaceholder.Trim(),
+            OllamaCloudVisionModel = string.IsNullOrWhiteSpace(OllamaCloudVisionModel) ? null : OllamaCloudVisionModel.Trim(),
             LmStudioEndpoint = string.IsNullOrWhiteSpace(LmStudioEndpoint) ? "http://localhost:1234/v1" : LmStudioEndpoint.Trim(),
             LmStudioVisionModel = string.IsNullOrWhiteSpace(LmStudioVisionModel) ? null : LmStudioVisionModel.Trim()
         };
@@ -794,6 +833,9 @@ public partial class MainViewModel(
         OpenAiVisionModel = settings.OpenAiVisionModel ?? string.Empty;
         OllamaEndpoint = settings.OllamaEndpoint ?? "http://localhost:11434";
         OllamaVisionModel = settings.OllamaVisionModel ?? string.Empty;
+        OllamaCloudEndpoint = settings.OllamaCloudEndpoint ?? "https://ollama.com";
+        OllamaCloudApiKeyPlaceholder = settings.OllamaCloudApiKeyPlaceholder ?? string.Empty;
+        OllamaCloudVisionModel = settings.OllamaCloudVisionModel ?? string.Empty;
         LmStudioEndpoint = settings.LmStudioEndpoint ?? "http://localhost:1234/v1";
         LmStudioVisionModel = settings.LmStudioVisionModel ?? string.Empty;
         OnPropertyChanged(nameof(ActiveAiModelSummary));
@@ -808,6 +850,7 @@ public partial class MainViewModel(
     partial void OnAiVisionProviderIdChanged(string value) => OnPropertyChanged(nameof(ActiveAiModelSummary));
     partial void OnOpenAiVisionModelChanged(string value) => OnPropertyChanged(nameof(ActiveAiModelSummary));
     partial void OnOllamaVisionModelChanged(string value) => OnPropertyChanged(nameof(ActiveAiModelSummary));
+    partial void OnOllamaCloudVisionModelChanged(string value) => OnPropertyChanged(nameof(ActiveAiModelSummary));
     partial void OnLmStudioVisionModelChanged(string value) => OnPropertyChanged(nameof(ActiveAiModelSummary));
 
     public async Task UpdateSelectionAsync(IReadOnlyList<MediaTileViewModel> selectedItems)
@@ -1625,7 +1668,13 @@ public partial class MainViewModel(
         SettingsStatusText = "Settings saved and applied.";
     }
 
-    private static string NormalizeAiVisionProviderId(string? providerId) => "lmstudio";
+    private static string NormalizeAiVisionProviderId(string? providerId)
+    {
+        var value = providerId?.Trim().ToLowerInvariant();
+        return value is "lmstudio" or "ollama" or "ollama-cloud" or "openai"
+            ? value
+            : "lmstudio";
+    }
 }
 
 public sealed record AiTagChipViewModel(string Label);

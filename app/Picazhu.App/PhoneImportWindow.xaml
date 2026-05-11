@@ -7,8 +7,8 @@
         Height="720"
         MinWidth="860"
         MinHeight="560"
-        Background="{StaticResource WindowBrush}"
-        Foreground="{StaticResource TextBrush}">
+        Background="{DynamicResource WindowBrush}"
+        Foreground="{DynamicResource TextBrush}">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <local:BoolToVisibilityInverseConverter x:Key="BoolToVisibilityInverseConverter" />
@@ -28,7 +28,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Margin="18" Background="{StaticResource WindowBackgroundBrush}">
+    <Border Margin="18" Background="{DynamicResource WindowBackgroundBrush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -36,7 +36,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Border Background="{StaticResource HeroPanelBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="22" Padding="20" Effect="{StaticResource PanelShadow}">
+            <Border Background="{DynamicResource HeroPanelBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="22" Padding="20" Effect="{DynamicResource PanelShadow}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -46,10 +46,10 @@
                         <TextBlock Text="Import from iPhone" Style="{StaticResource SectionTitleStyle}" />
                         <TextBlock Text="Browse trusted USB devices, copy original camera media, and add the import to PICAZHU automatically." Style="{StaticResource SectionCaptionStyle}" Margin="0,6,0,0" TextWrapping="Wrap" />
                     </StackPanel>
-                    <Border Grid.Column="1" Background="{StaticResource AccentSoftBrush}" BorderBrush="{StaticResource ControlBorderBrush}" BorderThickness="1" CornerRadius="16" Padding="14,10" VerticalAlignment="Center">
+                    <Border Grid.Column="1" Background="{DynamicResource AccentSoftBrush}" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" CornerRadius="16" Padding="14,10" VerticalAlignment="Center">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE8EA;" Style="{StaticResource IconTextBlockStyle}" Foreground="{StaticResource AccentBrush}" Margin="0,0,8,0" />
-                            <TextBlock Text="Camera originals only" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}" />
+                            <TextBlock Text="&#xE8EA;" Style="{StaticResource IconTextBlockStyle}" Foreground="{DynamicResource AccentBrush}" Margin="0,0,8,0" />
+                            <TextBlock Text="Camera originals only" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" />
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -61,7 +61,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0" Background="{StaticResource PanelGlassBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="22" Padding="18" Margin="0,0,16,0">
+                <Border Grid.Column="0" Background="{DynamicResource PanelGlassBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="22" Padding="18" Margin="0,0,16,0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -70,11 +70,11 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel>
-                            <TextBlock Text="Device" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{StaticResource AccentBrush}" />
-                            <TextBlock Text="Unlock the iPhone and approve Trust This Computer before scanning." Foreground="{StaticResource MutedBrush}" Margin="0,6,0,14" TextWrapping="Wrap" />
+                            <TextBlock Text="Device" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
+                            <TextBlock Text="Unlock the iPhone and approve Trust This Computer before scanning." Foreground="{DynamicResource MutedBrush}" Margin="0,6,0,14" TextWrapping="Wrap" />
                             <Button Click="RefreshDevices_Click" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,12" IsEnabled="{Binding CanRefresh}">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="&#xE72C;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" />
+                                    <TextBlock Text="&#xE72C;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" />
                                     <TextBlock Text="Refresh Devices" />
                                 </StackPanel>
                             </Button>
@@ -90,18 +90,18 @@
                                     <DataTemplate>
                                         <StackPanel>
                                             <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
-                                            <TextBlock Text="{Binding ManufacturerText}" Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,4,0,0" TextTrimming="CharacterEllipsis" />
-                                            <TextBlock Text="{Binding TrustHint}" Foreground="{StaticResource AccentBrush}" FontSize="11" Margin="0,4,0,0" />
+                                            <TextBlock Text="{Binding ManufacturerText}" Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,4,0,0" TextTrimming="CharacterEllipsis" />
+                                            <TextBlock Text="{Binding TrustHint}" Foreground="{DynamicResource AccentBrush}" FontSize="11" Margin="0,4,0,0" />
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
 
-                            <Border Background="{StaticResource PanelAltBrush}" CornerRadius="16" Padding="18" Visibility="{Binding HasDevices, Converter={StaticResource BoolToVisibilityInverseConverter}}">
+                            <Border Background="{DynamicResource PanelAltBrush}" CornerRadius="16" Padding="18" Visibility="{Binding HasDevices, Converter={StaticResource BoolToVisibilityInverseConverter}}">
                                 <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="&#xE8EA;" Style="{StaticResource IconTextBlockStyle}" FontSize="30" Foreground="{StaticResource AccentBrush}" HorizontalAlignment="Center" />
+                                    <TextBlock Text="&#xE8EA;" Style="{StaticResource IconTextBlockStyle}" FontSize="30" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Center" />
                                     <TextBlock Text="No devices yet" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Center" Margin="0,12,0,4" />
-                                    <TextBlock Text="Connect the iPhone by USB, unlock it, then refresh." Foreground="{StaticResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" />
+                                    <TextBlock Text="Connect the iPhone by USB, unlock it, then refresh." Foreground="{DynamicResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" />
                                 </StackPanel>
                             </Border>
                         </Grid>
@@ -109,15 +109,15 @@
                         <StackPanel Grid.Row="2" Margin="0,16,0,0">
                             <Button Click="ScanDevice_Click" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,0,16" IsEnabled="{Binding CanScanDevice}">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="&#xE8B7;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" />
+                                    <TextBlock Text="&#xE8B7;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" />
                                     <TextBlock Text="Scan Camera Media" />
                                 </StackPanel>
                             </Button>
-                            <TextBlock Text="Destination" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{StaticResource AccentBrush}" />
+                            <TextBlock Text="Destination" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
                             <TextBox Text="{Binding DestinationFolder, UpdateSourceTrigger=PropertyChanged}" Margin="0,8,0,8" />
                             <Button Click="BrowseDestination_Click" Style="{StaticResource GhostButtonStyle}" Margin="0" Padding="12,9" MinHeight="40">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="&#xE838;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" />
+                                    <TextBlock Text="&#xE838;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" />
                                     <TextBlock Text="Choose Folder" />
                                 </StackPanel>
                             </Button>
@@ -125,7 +125,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Column="1" Background="{StaticResource PanelGlassBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="22" Padding="18">
+                <Border Grid.Column="1" Background="{DynamicResource PanelGlassBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="22" Padding="18">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -141,7 +141,7 @@
                                 <TextBlock Text="Media to import" Style="{StaticResource SectionTitleStyle}" FontSize="22" />
                                 <TextBlock Text="{Binding MediaSummaryText}" Style="{StaticResource SectionCaptionStyle}" Margin="0,5,0,0" />
                                 <StackPanel Margin="0,8,0,0" Visibility="{Binding HasThumbnailProgress, Converter={StaticResource BoolToVisibilityConverter}}">
-                                    <TextBlock Text="{Binding ThumbnailProgressText}" Foreground="{StaticResource MutedBrush}" FontSize="11" />
+                                    <TextBlock Text="{Binding ThumbnailProgressText}" Foreground="{DynamicResource MutedBrush}" FontSize="11" />
                                     <ProgressBar Minimum="0" Maximum="100" Height="4" Value="{Binding ThumbnailProgressPercent}" Margin="0,6,0,0" />
                                 </StackPanel>
                             </StackPanel>
@@ -173,14 +173,14 @@
                                                 CornerRadius="18"
                                                 Padding="10"
                                                 Margin="0,0,12,12"
-                                                Effect="{StaticResource CardShadow}">
+                                                Effect="{DynamicResource CardShadow}">
                                             <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="150" />
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
 
-                                                <Border Background="{StaticResource ControlStrongBrush}" CornerRadius="15" ClipToBounds="True">
+                                                <Border Background="{DynamicResource ControlStrongBrush}" CornerRadius="15" ClipToBounds="True">
                                                     <Grid>
                                                         <Image Source="{Binding ThumbnailSource}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                             <Image.Style>
@@ -205,11 +205,11 @@
                                                                     </Style.Triggers>
                                                                 </Style>
                                                             </StackPanel.Style>
-                                                            <TextBlock Text="{Binding IconGlyph}" Style="{StaticResource IconTextBlockStyle}" FontSize="30" HorizontalAlignment="Center" Foreground="{StaticResource AccentBrush}" />
-                                                            <TextBlock Text="Loading preview" Foreground="{StaticResource MutedBrush}" FontSize="11" HorizontalAlignment="Center" Margin="0,10,0,0" />
+                                                            <TextBlock Text="{Binding IconGlyph}" Style="{StaticResource IconTextBlockStyle}" FontSize="30" HorizontalAlignment="Center" Foreground="{DynamicResource AccentBrush}" />
+                                                            <TextBlock Text="Loading preview" Foreground="{DynamicResource MutedBrush}" FontSize="11" HorizontalAlignment="Center" Margin="0,10,0,0" />
                                                         </StackPanel>
-                                                        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="#B0081118" CornerRadius="10" Padding="8,5" Margin="8">
-                                                            <TextBlock Text="{Binding KindLabel}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource TextBrush}" />
+                                                        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="{DynamicResource MediaOverlayBrush}" CornerRadius="10" Padding="8,5" Margin="8">
+                                                            <TextBlock Text="{Binding KindLabel}" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource MediaOverlayTextBrush}" />
                                                         </Border>
                                                         <CheckBox HorizontalAlignment="Right" VerticalAlignment="Top" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="8" />
                                                     </Grid>
@@ -217,25 +217,25 @@
 
                                                 <StackPanel Grid.Row="1" Margin="2,10,2,0">
                                                     <TextBlock Text="{Binding FileName}" FontWeight="SemiBold" FontSize="13" TextTrimming="CharacterEllipsis" />
-                                                    <TextBlock Text="{Binding RelativePath}" Foreground="{StaticResource MutedBrush}" FontSize="11" Margin="0,5,0,0" TextTrimming="CharacterEllipsis" />
+                                                    <TextBlock Text="{Binding RelativePath}" Foreground="{DynamicResource MutedBrush}" FontSize="11" Margin="0,5,0,0" TextTrimming="CharacterEllipsis" />
                                                     <Grid Margin="0,9,0,0">
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
-                                                        <TextBlock Text="{Binding SizeText}" Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" FontSize="11" />
-                                                        <TextBlock Grid.Column="1" Text="{Binding ModifiedText}" Foreground="{StaticResource MutedBrush}" FontSize="10" TextTrimming="CharacterEllipsis" />
+                                                        <TextBlock Text="{Binding SizeText}" Foreground="{DynamicResource AccentBrush}" FontWeight="SemiBold" FontSize="11" />
+                                                        <TextBlock Grid.Column="1" Text="{Binding ModifiedText}" Foreground="{DynamicResource MutedBrush}" FontSize="10" TextTrimming="CharacterEllipsis" />
                                                     </Grid>
                                                 </StackPanel>
                                             </Grid>
                                             <Border.Style>
                                                 <Style TargetType="{x:Type Border}">
-                                                    <Setter Property="BorderBrush" Value="{StaticResource DividerBrush}" />
-                                                    <Setter Property="Background" Value="{StaticResource PanelAltBrush}" />
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DividerBrush}" />
+                                                    <Setter Property="Background" Value="{DynamicResource PanelAltBrush}" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                                                            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-                                                            <Setter Property="Background" Value="{StaticResource AccentSoftBrush}" />
+                                                            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+                                                            <Setter Property="Background" Value="{DynamicResource AccentSoftBrush}" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
@@ -245,11 +245,11 @@
                                 </ListBox.ItemTemplate>
                             </ListBox>
 
-                            <Border Background="{StaticResource PanelAltBrush}" CornerRadius="18" Padding="28" HorizontalAlignment="Center" VerticalAlignment="Center" Width="430" Visibility="{Binding HasMediaItems, Converter={StaticResource BoolToVisibilityInverseConverter}}">
+                            <Border Background="{DynamicResource PanelAltBrush}" CornerRadius="18" Padding="28" HorizontalAlignment="Center" VerticalAlignment="Center" Width="430" Visibility="{Binding HasMediaItems, Converter={StaticResource BoolToVisibilityInverseConverter}}">
                                 <StackPanel>
-                                    <TextBlock Text="&#xF57C;" Style="{StaticResource IconTextBlockStyle}" FontSize="34" HorizontalAlignment="Center" Foreground="{StaticResource AccentBrush}" />
+                                    <TextBlock Text="&#xF57C;" Style="{StaticResource IconTextBlockStyle}" FontSize="34" HorizontalAlignment="Center" Foreground="{DynamicResource AccentBrush}" />
                                     <TextBlock Text="Scan a device to load media" FontWeight="SemiBold" FontSize="19" HorizontalAlignment="Center" Margin="0,12,0,4" />
-                                    <TextBlock Text="PICAZHU will show supported camera photos and videos here before copying originals." TextAlignment="Center" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" />
+                                    <TextBlock Text="PICAZHU will show supported camera photos and videos here before copying originals." TextAlignment="Center" Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap" />
                                 </StackPanel>
                             </Border>
                         </Grid>
@@ -257,7 +257,7 @@
                 </Border>
             </Grid>
 
-            <Border Grid.Row="2" Background="{StaticResource HeroPanelBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="18" Padding="16">
+            <Border Grid.Row="2" Background="{DynamicResource HeroPanelBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="18" Padding="16">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -265,7 +265,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel>
                         <TextBlock Text="{Binding StatusText}" FontWeight="SemiBold" />
-                        <TextBlock Text="{Binding DetailText}" Foreground="{StaticResource MutedBrush}" FontSize="12" Margin="0,5,0,0" TextTrimming="CharacterEllipsis" />
+                        <TextBlock Text="{Binding DetailText}" Foreground="{DynamicResource MutedBrush}" FontSize="12" Margin="0,5,0,0" TextTrimming="CharacterEllipsis" />
                         <ProgressBar Minimum="0" Maximum="100" Height="6" Value="{Binding ProgressPercent}" Margin="0,10,0,0" />
                     </StackPanel>
                     <WrapPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="18,0,0,0">

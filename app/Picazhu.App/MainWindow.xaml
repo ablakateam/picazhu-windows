@@ -11,8 +11,8 @@
         Height="940"
         MinWidth="920"
         MinHeight="640"
-        Background="{StaticResource WindowBrush}"
-        Foreground="{StaticResource TextBrush}"
+        Background="{DynamicResource WindowBrush}"
+        Foreground="{DynamicResource TextBrush}"
         KeyDown="Window_KeyDown"
         SizeChanged="Window_SizeChanged">
     <Window.Resources>
@@ -47,13 +47,13 @@
         </Style>
 
         <Style x:Key="CommandRailPrimaryButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource CommandRailButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
-            <Setter Property="Foreground" Value="#10161F" />
-            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
         </Style>
     </Window.Resources>
 
-    <Border Margin="18" Padding="0" CornerRadius="0" Background="{StaticResource WindowBackgroundBrush}">
+    <Border Margin="18" Padding="0" CornerRadius="0" Background="{DynamicResource WindowBackgroundBrush}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="CommandRailColumn" Width="84" />
@@ -65,7 +65,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Border x:Name="CommandRail" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Background="{StaticResource HeroPanelBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="24" Padding="9" Margin="0,0,14,0" Effect="{StaticResource PanelShadow}">
+            <Border x:Name="CommandRail" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Background="{DynamicResource HeroPanelBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="24" Padding="9" Margin="0,0,14,0" Effect="{DynamicResource PanelShadow}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -73,43 +73,43 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <Border Width="44" Height="44" CornerRadius="14" Background="{StaticResource AccentSoftBrush}" BorderBrush="{StaticResource ControlBorderBrush}" BorderThickness="1" HorizontalAlignment="Center">
+                    <Border Width="44" Height="44" CornerRadius="14" Background="{DynamicResource AccentSoftBrush}" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" HorizontalAlignment="Center">
                         <Image Source="pack://application:,,,/Assets/picazhulogo.png" Width="30" Height="30" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
 
                     <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,22,0,0">
                         <Button Click="AddFolder_Click" Style="{StaticResource CommandRailPrimaryButtonStyle}" ToolTip="Add folder">
-                            <TextBlock Text="&#xE710;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE710;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                         <Button Click="ImportFromIPhone_Click" Style="{StaticResource CommandRailButtonStyle}" ToolTip="Import from iPhone">
-                            <TextBlock Text="&#xE8EA;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE8EA;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                         <Button Click="RemoveFolder_Click" Style="{StaticResource CommandRailButtonStyle}" ToolTip="Remove selected folder">
-                            <TextBlock Text="&#xE74D;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE74D;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                         <Button Click="Rescan_Click" Style="{StaticResource CommandRailButtonStyle}" ToolTip="Rescan current library">
-                            <TextBlock Text="&#xE72C;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE72C;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                         <Button Click="Rebuild_Click" Style="{StaticResource CommandRailButtonStyle}" ToolTip="Rebuild index">
-                            <TextBlock Text="&#xE777;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE777;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                         <Button Click="Back_Click" Style="{StaticResource CommandRailButtonStyle}" ToolTip="Go back" IsEnabled="{Binding CanGoBack}">
-                            <TextBlock Text="&#xE72B;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE72B;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                         <Button Click="PinFolder_Click" Style="{StaticResource CommandRailButtonStyle}" ToolTip="Pin current folder">
-                            <TextBlock Text="&#xE718;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE718;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" HorizontalAlignment="Center">
                         <Button Click="OpenSettings_Click" Style="{StaticResource CommandRailButtonStyle}" ToolTip="Settings">
-                            <TextBlock Text="&#xE713;" Style="{StaticResource IconTextBlockStyle}" HorizontalAlignment="Center" />
+                            <TextBlock Text="&#xE713;" Style="{StaticResource ButtonIconTextBlockStyle}" HorizontalAlignment="Center" />
                         </Button>
                     </StackPanel>
                 </Grid>
             </Border>
 
-            <Border x:Name="HeaderShell" Grid.Row="0" Grid.Column="1" Background="{StaticResource HeroPanelBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="20" Padding="14,12" Margin="0,0,0,12" Effect="{StaticResource PanelShadow}">
+            <Border x:Name="HeaderShell" Grid.Row="0" Grid.Column="1" Background="{DynamicResource HeroPanelBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="20" Padding="14,12" Margin="0,0,0,12" Effect="{DynamicResource PanelShadow}">
                 <Grid x:Name="HeaderLayoutGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -128,10 +128,10 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
 
-                        <Border Background="{StaticResource PanelGlassBrush}" BorderBrush="{StaticResource ControlBorderBrush}" BorderThickness="1" CornerRadius="15" Padding="14,10" Margin="0,0,12,0">
+                        <Border Background="{DynamicResource PanelGlassBrush}" BorderBrush="{DynamicResource ControlBorderBrush}" BorderThickness="1" CornerRadius="15" Padding="14,10" Margin="0,0,12,0">
                             <Grid>
                                 <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
-                                <TextBlock Text="&#xE721;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="{StaticResource MutedBrush}" />
+                                <TextBlock Text="&#xE721;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="{DynamicResource MutedBrush}" />
                                 <TextBox Grid.Column="1" x:Name="SearchBox" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" KeyDown="SearchBox_KeyDown" Background="Transparent" BorderThickness="0" Padding="0" FontSize="15" VerticalContentAlignment="Center" />
                             </Grid>
                         </Border>
@@ -145,13 +145,13 @@
                                 <ComboBoxItem Content="Duration" />
                                 <ComboBoxItem Content="Type" />
                             </ComboBox>
-                            <Button Click="SaveSearch_Click" Style="{StaticResource ToolbarButtonStyle}" Padding="14,11" MinHeight="44" Margin="0,0,8,0"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE8C8;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Save Search" /></StackPanel></Button>
+                            <Button Click="SaveSearch_Click" Style="{StaticResource ToolbarButtonStyle}" Padding="14,11" MinHeight="44" Margin="0,0,8,0"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE8C8;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Save Search" /></StackPanel></Button>
                             <Button Click="ToggleAiFeatures_Click" Style="{StaticResource GhostButtonStyle}" Padding="14,9" MinHeight="44" Margin="0">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="&#xE7BA;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" />
+                                    <TextBlock Text="&#xE7BA;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" />
                                     <StackPanel>
                                         <TextBlock Text="{Binding AiToggleButtonText}" FontWeight="SemiBold" />
-                                        <TextBlock Text="{Binding AiToggleHintText}" FontSize="10" Foreground="{StaticResource MutedBrush}" />
+                                        <TextBlock Text="{Binding AiToggleHintText}" FontSize="10" Foreground="{DynamicResource MutedBrush}" />
                                     </StackPanel>
                                 </StackPanel>
                             </Button>
@@ -198,17 +198,17 @@
                         </StackPanel>
                         <ScrollViewer x:Name="LibraryScrollViewer" Grid.Row="1" Margin="0,18,0,0" VerticalScrollBarVisibility="Auto">
                             <StackPanel>
-                                <Border Background="Transparent" BorderBrush="{StaticResource DividerBrush}" BorderThickness="0,0,0,1" Padding="0,0,0,18">
+                                <Border Background="Transparent" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="0,0,0,1" Padding="0,0,0,18">
                                     <Grid>
                                         <TreeView ItemsSource="{Binding Roots}" SelectedItemChanged="FolderTree_SelectedItemChanged">
                                             <TreeView.Resources>
                                                 <HierarchicalDataTemplate DataType="{x:Type local:FolderNodeViewModel}" ItemsSource="{Binding Children}">
-                                                    <StackPanel Orientation="Horizontal"><TextBlock Text="&#xE8B7;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Name}" /></StackPanel>
+                                                    <StackPanel Orientation="Horizontal"><TextBlock Text="&#xE8B7;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" Foreground="{DynamicResource MutedBrush}" /><TextBlock Text="{Binding Name}" /></StackPanel>
                                                 </HierarchicalDataTemplate>
                                             </TreeView.Resources>
                                         </TreeView>
-                                        <Border Background="{StaticResource PanelGlassBrush}" CornerRadius="16" Padding="20" Visibility="{Binding Roots.Count, Converter={StaticResource ZeroToVisibilityConverter}}">
-                                            <StackPanel><TextBlock Text="&#xE8B7;" Style="{StaticResource IconTextBlockStyle}" FontSize="28" HorizontalAlignment="Center" Foreground="{StaticResource AccentBrush}" /><TextBlock Text="No library roots yet" FontFamily="{StaticResource AppDisplayFontFamily}" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Center" Margin="0,10,0,4" /><TextBlock Text="Add a photo or video folder to start building the catalog." TextAlignment="Center" TextWrapping="Wrap" Foreground="{StaticResource MutedBrush}" /></StackPanel>
+                                        <Border Background="{DynamicResource PanelGlassBrush}" CornerRadius="16" Padding="20" Visibility="{Binding Roots.Count, Converter={StaticResource ZeroToVisibilityConverter}}">
+                                            <StackPanel><TextBlock Text="&#xE8B7;" Style="{StaticResource IconTextBlockStyle}" FontSize="28" HorizontalAlignment="Center" Foreground="{DynamicResource AccentBrush}" /><TextBlock Text="No library roots yet" FontFamily="{StaticResource AppDisplayFontFamily}" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Center" Margin="0,10,0,4" /><TextBlock Text="Add a photo or video folder to start building the catalog." TextAlignment="Center" TextWrapping="Wrap" Foreground="{DynamicResource MutedBrush}" /></StackPanel>
                                         </Border>
                                     </Grid>
                                 </Border>
@@ -221,7 +221,7 @@
                     </Grid>
                 </Border>
 
-                <Border x:Name="GalleryRail" Grid.Row="0" Grid.Column="1" Background="{StaticResource PanelGlassBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="24" Padding="22" Margin="0,0,22,0">
+                <Border x:Name="GalleryRail" Grid.Row="0" Grid.Column="1" Background="{DynamicResource PanelGlassBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="24" Padding="22" Margin="0,0,22,0">
                     <Grid>
                         <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
                         <Grid>
@@ -230,9 +230,9 @@
                                 <TextBlock Text="{Binding SelectedFolder.Name, TargetNullValue=Browse your media}" Style="{StaticResource SectionTitleStyle}" />
                                 <TextBlock x:Name="SourceOfTruthText" Text="{Binding SourceOfTruthMessage}" Style="{StaticResource SectionCaptionStyle}" Margin="0,5,0,0" TextWrapping="Wrap" />
                             </StackPanel>
-                            <TextBlock Grid.Column="1" Text="Visual index" Foreground="{StaticResource AccentBrush}" VerticalAlignment="Center" FontWeight="SemiBold" />
+                            <TextBlock Grid.Column="1" Text="Visual index" Foreground="{DynamicResource AccentBrush}" VerticalAlignment="Center" FontWeight="SemiBold" />
                         </Grid>
-                        <Border Grid.Row="1" Margin="0,18,0,18" Background="Transparent" BorderBrush="{StaticResource DividerBrush}" BorderThickness="0,0,0,1" Padding="0,0,0,14">
+                        <Border Grid.Row="1" Margin="0,18,0,18" Background="Transparent" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="0,0,0,1" Padding="0,0,0,14">
                             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
                                 <ItemsControl ItemsSource="{Binding Breadcrumbs}">
                                     <ItemsControl.ItemsPanel><ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate></ItemsControl.ItemsPanel>
@@ -240,32 +240,32 @@
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
                                                 <Button Content="{Binding Label}" Click="Breadcrumb_Click" Tag="{Binding}" Style="{StaticResource GhostButtonStyle}" Margin="0,0,2,2" Padding="0" />
-                                                <TextBlock Text="/" Margin="8,0,10,2" VerticalAlignment="Center" Foreground="{StaticResource SubtleBrush}" />
+                                                <TextBlock Text="/" Margin="8,0,10,2" VerticalAlignment="Center" Foreground="{DynamicResource SubtleBrush}" />
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
                             </ScrollViewer>
                         </Border>
-                        <Border Grid.Row="2" Background="{StaticResource PanelAltBrush}" CornerRadius="16" Padding="14,12" Margin="0,0,0,18" Visibility="{Binding HasMediaItems, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <Border Grid.Row="2" Background="{DynamicResource PanelAltBrush}" CornerRadius="16" Padding="14,12" Margin="0,0,0,18" Visibility="{Binding HasMediaItems, Converter={StaticResource BoolToVisibilityConverter}}">
                             <Grid>
                                 <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                                 <StackPanel>
                                     <TextBlock Text="{Binding SelectionSummaryText}" FontWeight="SemiBold" FontSize="14" />
-                                    <TextBlock Text="{Binding SelectionDetailText}" Margin="0,4,0,0" Foreground="{StaticResource MutedBrush}" FontSize="12" />
+                                    <TextBlock Text="{Binding SelectionDetailText}" Margin="0,4,0,0" Foreground="{DynamicResource MutedBrush}" FontSize="12" />
                                     <TextBlock Text="{Binding VisibleAiSummaryText}" Margin="0,8,0,0" FontSize="12" FontWeight="SemiBold" Visibility="{Binding ShowVisibleAiStatus, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                    <TextBlock Text="{Binding VisibleAiDetailText}" Margin="0,2,0,0" Foreground="{StaticResource MutedBrush}" FontSize="12" TextWrapping="Wrap" Visibility="{Binding ShowVisibleAiStatus, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                    <TextBlock Text="{Binding VisibleAiDetailText}" Margin="0,2,0,0" Foreground="{DynamicResource MutedBrush}" FontSize="12" TextWrapping="Wrap" Visibility="{Binding ShowVisibleAiStatus, Converter={StaticResource BoolToVisibilityConverter}}" />
                                     <ProgressBar Margin="0,8,0,0" Height="6" Minimum="0" Maximum="100" Value="{Binding VisibleAiProgressPercent}" Visibility="{Binding ShowVisibleAiStatus, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                    <Border Background="{StaticResource AccentSoftBrush}" CornerRadius="10" Padding="8,4" Margin="0,8,0,0" HorizontalAlignment="Left" Visibility="{Binding ShowMouseSelectionBadge, Converter={StaticResource BoolToVisibilityConverter}}">
-                                        <TextBlock Text="{Binding MouseSelectionModeText}" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}" />
+                                    <Border Background="{DynamicResource AccentSoftBrush}" CornerRadius="10" Padding="8,4" Margin="0,8,0,0" HorizontalAlignment="Left" Visibility="{Binding ShowMouseSelectionBadge, Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <TextBlock Text="{Binding MouseSelectionModeText}" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" />
                                     </Border>
                                     <TextBlock Text="{Binding ExportProgressText}" Margin="0,8,0,0" FontSize="12" FontWeight="SemiBold" Visibility="{Binding IsExporting, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                    <TextBlock Text="{Binding ExportDetailText}" Margin="0,2,0,0" FontSize="12" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" Visibility="{Binding IsExporting, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                    <TextBlock Text="{Binding ExportDetailText}" Margin="0,2,0,0" FontSize="12" Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap" Visibility="{Binding IsExporting, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 </StackPanel>
                                 <WrapPanel Grid.Column="1" VerticalAlignment="Center">
                                     <Button Click="SelectAllVisible_Click" Style="{StaticResource GhostButtonStyle}" Margin="0,0,10,0"><TextBlock Text="Select All Visible" /></Button>
                                     <Button Click="ClearSelection_Click" Style="{StaticResource ToolbarButtonStyle}" Margin="0,0,10,0" IsEnabled="{Binding HasAnySelectedMedia}"><TextBlock Text="Clear Selection" /></Button>
-                                    <Button Click="ExportSelected_Click" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="{Binding CanExportSelected}"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE74E;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Export Selected" /></StackPanel></Button>
+                                    <Button Click="ExportSelected_Click" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="{Binding CanExportSelected}"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE74E;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Export Selected" /></StackPanel></Button>
                                 </WrapPanel>
                             </Grid>
                         </Border>
@@ -274,129 +274,129 @@
                                 <ListBox.ItemsPanel><ItemsPanelTemplate><local:VirtualizingWrapPanel ItemWidth="252" ItemHeight="294" /></ItemsPanelTemplate></ListBox.ItemsPanel>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Width="238" Height="278" Margin="7" Background="{StaticResource PanelAltBrush}" CornerRadius="18">
+                                        <Border Width="238" Height="278" Margin="7" Background="{DynamicResource PanelAltBrush}" CornerRadius="18">
                                             <Border.Style>
                                                 <Style TargetType="{x:Type Border}">
                                                     <Setter Property="BorderThickness" Value="1" />
-                                                    <Setter Property="BorderBrush" Value="{StaticResource DividerBrush}" />
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DividerBrush}" />
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsMouseOver}" Value="True">
-                                                            <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
-                                                            <Setter Property="Effect" Value="{StaticResource CardShadow}" />
+                                                            <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}" />
+                                                            <Setter Property="Effect" Value="{DynamicResource CardShadow}" />
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
-                                                            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-                                                            <Setter Property="Background" Value="{StaticResource ControlBrush}" />
-                                                            <Setter Property="Effect" Value="{StaticResource CardShadow}" />
+                                                            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+                                                            <Setter Property="Background" Value="{DynamicResource ControlBrush}" />
+                                                            <Setter Property="Effect" Value="{DynamicResource CardShadow}" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </Border.Style>
                                             <Grid Margin="12">
                                                 <Grid.RowDefinitions><RowDefinition Height="180" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-                                                <Border Background="{StaticResource ControlStrongBrush}" CornerRadius="14" ClipToBounds="True">
+                                                <Border Background="{DynamicResource ControlStrongBrush}" CornerRadius="14" ClipToBounds="True">
                                                     <Grid>
                                                         <Image Source="{Binding ThumbnailSource}" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                        <Border Background="#88000000" VerticalAlignment="Bottom">
+                                                        <Border Background="{DynamicResource MediaOverlayBrush}" VerticalAlignment="Bottom">
                                                             <Grid Margin="12,10">
                                                                 <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
-                                                                <TextBlock Text="{Binding FileName}" FontWeight="SemiBold" FontSize="14" TextTrimming="CharacterEllipsis" />
-                                                                <TextBlock Grid.Column="1" Text="{Binding MediaKindLabel}" FontSize="11" Foreground="{StaticResource AccentBrush}" Margin="12,0,0,0" />
+                                                                <TextBlock Text="{Binding FileName}" FontWeight="SemiBold" FontSize="14" TextTrimming="CharacterEllipsis" Foreground="{DynamicResource MediaOverlayTextBrush}" />
+                                                                <TextBlock Grid.Column="1" Text="{Binding MediaKindLabel}" FontSize="11" Foreground="{DynamicResource AccentBrush}" Margin="12,0,0,0" />
                                                             </Grid>
                                                         </Border>
-                                                        <Border Background="#B0141D2A" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Visibility="{Binding HasDurationBadge, Converter={StaticResource BoolToVisibilityConverter}}"><TextBlock Text="{Binding DurationText}" FontSize="11" FontWeight="SemiBold" /></Border>
-                                                        <Border Background="#AA204A6C" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,44,10,10" Visibility="{Binding ShowAiPendingBadge, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                        <Border Background="{DynamicResource MediaOverlayBrush}" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Visibility="{Binding HasDurationBadge, Converter={StaticResource BoolToVisibilityConverter}}"><TextBlock Text="{Binding DurationText}" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource MediaOverlayTextBrush}" /></Border>
+                                                        <Border Background="{DynamicResource MediaBadgeInfoBrush}" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,44,10,10" Visibility="{Binding ShowAiPendingBadge, Converter={StaticResource BoolToVisibilityConverter}}">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <TextBlock Text="&#xE823;" Style="{StaticResource IconTextBlockStyle}" FontSize="10" Margin="0,0,6,0" />
-                                                                <TextBlock Text="AI Pending" FontSize="11" FontWeight="SemiBold" />
+                                                                <TextBlock Text="&#xE823;" Style="{StaticResource IconTextBlockStyle}" Foreground="{DynamicResource MediaBadgeTextBrush}" FontSize="10" Margin="0,0,6,0" />
+                                                                <TextBlock Text="AI Pending" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource MediaBadgeTextBrush}" />
                                                             </StackPanel>
                                                         </Border>
-                                                        <Border Background="#AA185C37" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,44,10,10" Visibility="{Binding ShowAiReadyBadge, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                        <Border Background="{DynamicResource MediaBadgeSuccessBrush}" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,44,10,10" Visibility="{Binding ShowAiReadyBadge, Converter={StaticResource BoolToVisibilityConverter}}">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <TextBlock Text="&#xE73E;" Style="{StaticResource IconTextBlockStyle}" FontSize="10" Margin="0,0,6,0" />
-                                                                <TextBlock Text="AI Ready" FontSize="11" FontWeight="SemiBold" />
+                                                                <TextBlock Text="&#xE73E;" Style="{StaticResource IconTextBlockStyle}" Foreground="{DynamicResource MediaBadgeTextBrush}" FontSize="10" Margin="0,0,6,0" />
+                                                                <TextBlock Text="AI Ready" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource MediaBadgeTextBrush}" />
                                                             </StackPanel>
                                                         </Border>
-                                                        <Border Background="#AA6B2D20" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,44,10,10" Visibility="{Binding ShowAiFailedBadge, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                        <Border Background="{DynamicResource MediaBadgeDangerBrush}" CornerRadius="10" Padding="8,4" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,44,10,10" Visibility="{Binding ShowAiFailedBadge, Converter={StaticResource BoolToVisibilityConverter}}">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <TextBlock Text="&#xEA39;" Style="{StaticResource IconTextBlockStyle}" FontSize="10" Margin="0,0,6,0" />
-                                                                <TextBlock Text="AI Failed" FontSize="11" FontWeight="SemiBold" />
+                                                                <TextBlock Text="&#xEA39;" Style="{StaticResource IconTextBlockStyle}" Foreground="{DynamicResource MediaBadgeTextBrush}" FontSize="10" Margin="0,0,6,0" />
+                                                                <TextBlock Text="AI Failed" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource MediaBadgeTextBrush}" />
                                                             </StackPanel>
                                                         </Border>
-                                                        <Border Background="{StaticResource AccentBrush}" CornerRadius="10" Padding="8,4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Visibility="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                        <Border Background="{DynamicResource AccentBrush}" CornerRadius="10" Padding="8,4" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Visibility="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected, Converter={StaticResource BoolToVisibilityConverter}}">
                                                             <StackPanel Orientation="Horizontal">
-                                                                <TextBlock Text="&#xE73E;" Style="{StaticResource IconTextBlockStyle}" FontSize="10" Margin="0,0,6,0" />
-                                                                <TextBlock Text="Selected" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource WindowBackgroundBrush}" />
+                                                                <TextBlock Text="&#xE73E;" Style="{StaticResource IconTextBlockStyle}" Foreground="{DynamicResource AccentForegroundBrush}" FontSize="10" Margin="0,0,6,0" />
+                                                                <TextBlock Text="Selected" FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource AccentForegroundBrush}" />
                                                             </StackPanel>
                                                         </Border>
                                                     </Grid>
                                                 </Border>
                                                 <Grid Grid.Row="1" Margin="2,14,2,0">
                                                     <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
-                                                    <TextBlock Text="{Binding DimensionsText}" Foreground="{StaticResource MutedBrush}" FontSize="12" />
-                                                    <TextBlock Grid.Row="1" Text="{Binding SizeText}" Foreground="{StaticResource SubtleBrush}" FontSize="12" Margin="0,4,0,0" />
-                                                    <TextBlock Grid.Row="2" Text="{Binding FullPath}" Foreground="{StaticResource SubtleBrush}" FontSize="11" TextTrimming="CharacterEllipsis" Margin="0,10,0,0" />
+                                                    <TextBlock Text="{Binding DimensionsText}" Foreground="{DynamicResource MutedBrush}" FontSize="12" />
+                                                    <TextBlock Grid.Row="1" Text="{Binding SizeText}" Foreground="{DynamicResource SubtleBrush}" FontSize="12" Margin="0,4,0,0" />
+                                                    <TextBlock Grid.Row="2" Text="{Binding FullPath}" Foreground="{DynamicResource SubtleBrush}" FontSize="11" TextTrimming="CharacterEllipsis" Margin="0,10,0,0" />
                                                 </Grid>
                                             </Grid>
                                         </Border>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
-                            <Border Background="{StaticResource PanelAltBrush}" CornerRadius="22" Padding="28" HorizontalAlignment="Center" VerticalAlignment="Center" Width="420" Visibility="{Binding MediaItems.Count, Converter={StaticResource ZeroToVisibilityConverter}}">
-                                <StackPanel><TextBlock Text="&#xF57C;" Style="{StaticResource IconTextBlockStyle}" FontSize="34" HorizontalAlignment="Center" Foreground="{StaticResource AccentBrush}" /><TextBlock Text="No frames in view" FontFamily="{StaticResource AppDisplayFontFamily}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,12,0,4" /><TextBlock Text="Open a different folder or relax the current filters to bring the gallery back into focus." TextAlignment="Center" Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" /></StackPanel>
+                            <Border Background="{DynamicResource PanelAltBrush}" CornerRadius="22" Padding="28" HorizontalAlignment="Center" VerticalAlignment="Center" Width="420" Visibility="{Binding MediaItems.Count, Converter={StaticResource ZeroToVisibilityConverter}}">
+                                <StackPanel><TextBlock Text="&#xF57C;" Style="{StaticResource IconTextBlockStyle}" FontSize="34" HorizontalAlignment="Center" Foreground="{DynamicResource AccentBrush}" /><TextBlock Text="No frames in view" FontFamily="{StaticResource AppDisplayFontFamily}" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,12,0,4" /><TextBlock Text="Open a different folder or relax the current filters to bring the gallery back into focus." TextAlignment="Center" Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap" /></StackPanel>
                             </Border>
                         </Grid>
                     </Grid>
                 </Border>
 
-                <Border x:Name="PreviewRail" Grid.Row="0" Grid.Column="2" Background="{StaticResource PanelGlassBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="24" Padding="22">
+                <Border x:Name="PreviewRail" Grid.Row="0" Grid.Column="2" Background="{DynamicResource PanelGlassBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="24" Padding="22">
                     <Grid>
                         <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition x:Name="PreviewStageRow" Height="246" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
                         <Grid>
                             <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
                             <StackPanel><TextBlock Text="Preview" Style="{StaticResource SectionTitleStyle}" FontSize="22" /><TextBlock Text="Inspect the selected image or video before opening it." Style="{StaticResource SectionCaptionStyle}" Margin="0,4,0,0" /></StackPanel>
-                            <TextBlock Grid.Column="1" Text="Selection" Foreground="{StaticResource AccentBrush}" VerticalAlignment="Center" FontWeight="SemiBold" />
+                            <TextBlock Grid.Column="1" Text="Selection" Foreground="{DynamicResource AccentBrush}" VerticalAlignment="Center" FontWeight="SemiBold" />
                         </Grid>
                         <Grid Grid.Row="1" Margin="0,18,0,0">
-                            <Border Background="{StaticResource ControlStrongBrush}" CornerRadius="20" ClipToBounds="True" Visibility="{Binding ShowSinglePreview, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <Border Background="{DynamicResource ControlStrongBrush}" CornerRadius="20" ClipToBounds="True" Visibility="{Binding ShowSinglePreview, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <Grid>
                                     <Image x:Name="PreviewImage" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                    <Border VerticalAlignment="Bottom" Background="#96081118" Padding="16,12">
+                                    <Border VerticalAlignment="Bottom" Background="{DynamicResource MediaOverlayBrush}" Padding="16,12">
                                         <StackPanel>
-                                            <TextBlock Text="{Binding SelectedMedia.FileName, TargetNullValue=Nothing selected}" FontWeight="SemiBold" FontSize="15" />
-                                            <TextBlock Text="{Binding SelectedMedia.DimensionsText, TargetNullValue=Choose a frame from the gallery}" Foreground="{StaticResource MutedBrush}" Margin="0,4,0,0" />
+                                            <TextBlock Text="{Binding SelectedMedia.FileName, TargetNullValue=Nothing selected}" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource MediaOverlayTextBrush}" />
+                                            <TextBlock Text="{Binding SelectedMedia.DimensionsText, TargetNullValue=Choose a frame from the gallery}" Foreground="{DynamicResource MediaOverlayTextBrush}" Opacity="0.82" Margin="0,4,0,0" />
                                         </StackPanel>
                                     </Border>
                                 </Grid>
                             </Border>
-                            <Border Background="{StaticResource PanelAltBrush}" CornerRadius="20" Padding="28" Visibility="{Binding HasMultipleSelectedMedia, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <Border Background="{DynamicResource PanelAltBrush}" CornerRadius="20" Padding="28" Visibility="{Binding HasMultipleSelectedMedia, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="&#xE8A5;" Style="{StaticResource IconTextBlockStyle}" FontSize="32" HorizontalAlignment="Center" Foreground="{StaticResource AccentBrush}" />
+                                    <TextBlock Text="&#xE8A5;" Style="{StaticResource IconTextBlockStyle}" FontSize="32" HorizontalAlignment="Center" Foreground="{DynamicResource AccentBrush}" />
                                     <TextBlock Text="{Binding SelectionSummaryText}" FontFamily="{StaticResource AppDisplayFontFamily}" FontWeight="SemiBold" FontSize="19" HorizontalAlignment="Center" Margin="0,14,0,4" />
-                                    <TextBlock Text="{Binding SelectionDetailText}" Foreground="{StaticResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" />
-                                    <TextBlock Text="Export Selected copies the original files into a folder you choose." Margin="0,12,0,0" Foreground="{StaticResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" />
+                                    <TextBlock Text="{Binding SelectionDetailText}" Foreground="{DynamicResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" />
+                                    <TextBlock Text="Export Selected copies the original files into a folder you choose." Margin="0,12,0,0" Foreground="{DynamicResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" />
                                 </StackPanel>
                             </Border>
-                            <Border Background="{StaticResource PanelAltBrush}" CornerRadius="20" Padding="28" Visibility="{Binding HasAnySelectedMedia, Converter={StaticResource BoolToVisibilityInverseConverter}}">
-                                <StackPanel VerticalAlignment="Center"><TextBlock Text="&#xE91B;" Style="{StaticResource IconTextBlockStyle}" FontSize="32" HorizontalAlignment="Center" Foreground="{StaticResource AccentBrush}" /><TextBlock Text="Select a still or clip" FontFamily="{StaticResource AppDisplayFontFamily}" FontWeight="SemiBold" FontSize="19" HorizontalAlignment="Center" Margin="0,14,0,4" /><TextBlock Text="PICAZHU will surface a larger preview here, along with metadata and decoder diagnostics." Foreground="{StaticResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" /></StackPanel>
+                            <Border Background="{DynamicResource PanelAltBrush}" CornerRadius="20" Padding="28" Visibility="{Binding HasAnySelectedMedia, Converter={StaticResource BoolToVisibilityInverseConverter}}">
+                                <StackPanel VerticalAlignment="Center"><TextBlock Text="&#xE91B;" Style="{StaticResource IconTextBlockStyle}" FontSize="32" HorizontalAlignment="Center" Foreground="{DynamicResource AccentBrush}" /><TextBlock Text="Select a still or clip" FontFamily="{StaticResource AppDisplayFontFamily}" FontWeight="SemiBold" FontSize="19" HorizontalAlignment="Center" Margin="0,14,0,4" /><TextBlock Text="PICAZHU will surface a larger preview here, along with metadata and decoder diagnostics." Foreground="{DynamicResource MutedBrush}" TextAlignment="Center" TextWrapping="Wrap" /></StackPanel>
                             </Border>
                         </Grid>
                         <WrapPanel Grid.Row="2" Margin="0,16,0,18">
-                            <Button Click="OpenSelected_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding ShowSinglePreview}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE8E5;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Open Original" /></StackPanel></Button>
-                            <Button Click="RevealSelected_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding ShowSinglePreview}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE838;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Show In Folder" /></StackPanel></Button>
-                            <Button Click="OpenInMaps_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding CanOpenInMaps}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE707;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Open In Maps" /></StackPanel></Button>
-                            <Button Click="QuickPreview_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding ShowSinglePreview}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE722;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Quick Preview" /></StackPanel></Button>
-                            <Button Click="ExportSelected_Click" Style="{StaticResource PrimaryButtonStyle}" MinWidth="144" Margin="0,0,0,8" IsEnabled="{Binding CanExportSelected}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE74E;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Export Selected" /></StackPanel></Button>
+                            <Button Click="OpenSelected_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding ShowSinglePreview}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE8E5;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Open Original" /></StackPanel></Button>
+                            <Button Click="RevealSelected_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding ShowSinglePreview}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE838;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Show In Folder" /></StackPanel></Button>
+                            <Button Click="OpenInMaps_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding CanOpenInMaps}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE707;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Open In Maps" /></StackPanel></Button>
+                            <Button Click="QuickPreview_Click" Style="{StaticResource ToolbarButtonStyle}" MinWidth="144" Margin="0,0,8,8" IsEnabled="{Binding ShowSinglePreview}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE722;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Quick Preview" /></StackPanel></Button>
+                            <Button Click="ExportSelected_Click" Style="{StaticResource PrimaryButtonStyle}" MinWidth="144" Margin="0,0,0,8" IsEnabled="{Binding CanExportSelected}"><StackPanel Orientation="Horizontal" HorizontalAlignment="Center"><TextBlock Text="&#xE74E;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" /><TextBlock Text="Export Selected" /></StackPanel></Button>
                         </WrapPanel>
                         <TabControl Grid.Row="3">
-                            <TabItem Header="Details"><Border Background="{StaticResource PanelAltBrush}" CornerRadius="16" Padding="16" Margin="0,10,0,0"><ScrollViewer VerticalScrollBarVisibility="Auto"><TextBlock Text="{Binding SelectedMetadataText}" TextWrapping="Wrap" LineHeight="21" /></ScrollViewer></Border></TabItem>
+                            <TabItem Header="Details"><Border Background="{DynamicResource PanelAltBrush}" CornerRadius="16" Padding="16" Margin="0,10,0,0"><ScrollViewer VerticalScrollBarVisibility="Auto"><TextBlock Text="{Binding SelectedMetadataText}" TextWrapping="Wrap" LineHeight="21" /></ScrollViewer></Border></TabItem>
                             <TabItem Header="Tags" Visibility="{Binding ShowTagsTab, Converter={StaticResource BoolToVisibilityConverter}}">
-                                <Border Background="{StaticResource PanelAltBrush}" CornerRadius="16" Padding="16" Margin="0,10,0,0">
+                                <Border Background="{DynamicResource PanelAltBrush}" CornerRadius="16" Padding="16" Margin="0,10,0,0">
                                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                                         <StackPanel>
                                             <TextBlock Text="AI Summary" Style="{StaticResource SidebarSectionTitleStyle}" Visibility="{Binding HasSelectedAiCaption, Converter={StaticResource BoolToVisibilityConverter}}" />
-                                            <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="0,10,0,0" Visibility="{Binding HasSelectedAiCaption, Converter={StaticResource BoolToVisibilityConverter}}">
-                                                <TextBlock Text="{Binding SelectedAiCaption}" TextWrapping="Wrap" Foreground="{StaticResource MutedBrush}" />
+                                            <Border Background="{DynamicResource PanelBrush}" CornerRadius="12" Padding="12" Margin="0,10,0,0" Visibility="{Binding HasSelectedAiCaption, Converter={StaticResource BoolToVisibilityConverter}}">
+                                                <TextBlock Text="{Binding SelectedAiCaption}" TextWrapping="Wrap" Foreground="{DynamicResource MutedBrush}" />
                                             </Border>
 
                                             <TextBlock Text="Objects" Style="{StaticResource SidebarSectionTitleStyle}" />
@@ -414,7 +414,7 @@
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
-                                            <TextBlock Text="No object tags yet" Margin="0,10,0,0" Foreground="{StaticResource MutedBrush}" Visibility="{Binding HasObjectTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                                            <TextBlock Text="No object tags yet" Margin="0,10,0,0" Foreground="{DynamicResource MutedBrush}" Visibility="{Binding HasObjectTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
 
                                             <TextBlock Text="Scene" Style="{StaticResource SidebarSectionTitleStyle}" Margin="0,18,0,0" />
                                             <ItemsControl ItemsSource="{Binding SceneTags}" Visibility="{Binding HasSceneTags, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,10,0,0">
@@ -431,7 +431,7 @@
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
-                                            <TextBlock Text="No scene tags yet" Margin="0,10,0,0" Foreground="{StaticResource MutedBrush}" Visibility="{Binding HasSceneTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                                            <TextBlock Text="No scene tags yet" Margin="0,10,0,0" Foreground="{DynamicResource MutedBrush}" Visibility="{Binding HasSceneTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
 
                                             <TextBlock Text="Logos" Style="{StaticResource SidebarSectionTitleStyle}" Margin="0,18,0,0" />
                                             <ItemsControl ItemsSource="{Binding LogoTags}" Visibility="{Binding HasLogoTags, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,10,0,0">
@@ -448,7 +448,7 @@
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
-                                            <TextBlock Text="No logo tags yet" Margin="0,10,0,0" Foreground="{StaticResource MutedBrush}" Visibility="{Binding HasLogoTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                                            <TextBlock Text="No logo tags yet" Margin="0,10,0,0" Foreground="{DynamicResource MutedBrush}" Visibility="{Binding HasLogoTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
 
                                             <TextBlock Text="Text" Style="{StaticResource SidebarSectionTitleStyle}" Margin="0,18,0,0" />
                                             <ItemsControl ItemsSource="{Binding TextTags}" Visibility="{Binding HasTextTags, Converter={StaticResource BoolToVisibilityConverter}}" Margin="0,10,0,0">
@@ -465,18 +465,18 @@
                                                     </DataTemplate>
                                                 </ItemsControl.ItemTemplate>
                                             </ItemsControl>
-                                            <TextBlock Text="No text tags yet" Margin="0,10,0,0" Foreground="{StaticResource MutedBrush}" Visibility="{Binding HasTextTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
+                                            <TextBlock Text="No text tags yet" Margin="0,10,0,0" Foreground="{DynamicResource MutedBrush}" Visibility="{Binding HasTextTags, Converter={StaticResource BoolToVisibilityInverseConverter}}" />
                                         </StackPanel>
                                     </ScrollViewer>
                                 </Border>
                             </TabItem>
-                            <TabItem Header="Diagnostics"><Border Background="{StaticResource PanelAltBrush}" CornerRadius="16" Padding="16" Margin="0,10,0,0"><ScrollViewer VerticalScrollBarVisibility="Auto"><TextBlock Text="{Binding DiagnosticsText}" TextWrapping="Wrap" LineHeight="21" /></ScrollViewer></Border></TabItem>
+                            <TabItem Header="Diagnostics"><Border Background="{DynamicResource PanelAltBrush}" CornerRadius="16" Padding="16" Margin="0,10,0,0"><ScrollViewer VerticalScrollBarVisibility="Auto"><TextBlock Text="{Binding DiagnosticsText}" TextWrapping="Wrap" LineHeight="21" /></ScrollViewer></Border></TabItem>
                         </TabControl>
                     </Grid>
                 </Border>
             </Grid>
 
-            <Border x:Name="StatusStrip" Grid.Row="2" Grid.Column="1" Background="{StaticResource HeroPanelBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" CornerRadius="18" Padding="14,10" Margin="0,12,0,0">
+            <Border x:Name="StatusStrip" Grid.Row="2" Grid.Column="1" Background="{DynamicResource HeroPanelBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="18" Padding="14,10" Margin="0,12,0,0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -485,7 +485,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="0" Margin="0,0,18,0">
-                        <TextBlock Text="Library" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{StaticResource AccentBrush}" />
+                        <TextBlock Text="Library" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
                         <TextBlock Text="{Binding StatusText}" Margin="0,4,0,0" FontSize="12" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
                         <TextBlock Text="{Binding IndexingProgressText}" Margin="0,6,0,0" FontSize="11" FontWeight="SemiBold" Visibility="{Binding HasIndexingControls, Converter={StaticResource BoolToVisibilityConverter}}" />
                         <ProgressBar Margin="0,6,0,0" Height="5" Minimum="0" Maximum="100" Value="{Binding IndexingProgressPercent}" IsIndeterminate="{Binding IsIndexingCounting}" Visibility="{Binding HasIndexingControls, Converter={StaticResource BoolToVisibilityConverter}}" />
@@ -498,14 +498,14 @@
                     <StackPanel Grid.Column="1" Margin="0,0,18,0">
                         <TextBlock Text="Thumbnails" Style="{StaticResource SidebarSectionTitleStyle}" />
                         <TextBlock Text="{Binding ThumbnailProgressText}" Margin="0,4,0,0" FontSize="12" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
-                        <TextBlock Text="{Binding ThumbnailDetailText}" Margin="0,3,0,0" FontSize="11" Foreground="{StaticResource MutedBrush}" TextTrimming="CharacterEllipsis" />
+                        <TextBlock Text="{Binding ThumbnailDetailText}" Margin="0,3,0,0" FontSize="11" Foreground="{DynamicResource MutedBrush}" TextTrimming="CharacterEllipsis" />
                         <ProgressBar Margin="0,6,0,0" Height="5" Minimum="0" Maximum="100" Value="{Binding ThumbnailProgressPercent}" Visibility="{Binding HasThumbnailProgress, Converter={StaticResource BoolToVisibilityConverter}}" />
                     </StackPanel>
 
                     <StackPanel Grid.Column="2">
-                        <TextBlock Text="AI" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{StaticResource AccentBrush}" />
+                        <TextBlock Text="AI" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
                         <TextBlock Text="{Binding AiIndexingProgressText}" Margin="0,4,0,0" FontSize="12" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
-                        <TextBlock Text="{Binding AiProviderStatusText}" Margin="0,3,0,0" FontSize="11" Foreground="{StaticResource MutedBrush}" TextTrimming="CharacterEllipsis" />
+                        <TextBlock Text="{Binding AiProviderStatusText}" Margin="0,3,0,0" FontSize="11" Foreground="{DynamicResource MutedBrush}" TextTrimming="CharacterEllipsis" />
                         <ProgressBar Margin="0,6,0,0" Height="5" Minimum="0" Maximum="100" Value="{Binding AiIndexingProgressPercent}" Visibility="{Binding HasAiProgress, Converter={StaticResource BoolToVisibilityConverter}}" />
                     </StackPanel>
                 </Grid>

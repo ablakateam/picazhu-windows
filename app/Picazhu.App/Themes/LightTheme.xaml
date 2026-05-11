@@ -1,23 +1,78 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="WindowColor">#F4F1EC</Color>
-    <Color x:Key="WindowOverlayColor">#E7E2D9</Color>
-    <Color x:Key="WindowDepthColor">#DDD5CA</Color>
-    <Color x:Key="PanelColor">#FBF9F5</Color>
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Color x:Key="WindowColor">#F7F4EF</Color>
+    <Color x:Key="WindowOverlayColor">#EFE7DD</Color>
+    <Color x:Key="WindowDepthColor">#E6DBCE</Color>
+    <Color x:Key="PanelColor">#FFFCF8</Color>
     <Color x:Key="PanelElevatedColor">#FFFFFF</Color>
-    <Color x:Key="PanelGlassColor">#E6FFFFFF</Color>
-    <Color x:Key="SurfaceColor">#F1ECE4</Color>
-    <Color x:Key="SurfaceStrongColor">#E8E2D8</Color>
-    <Color x:Key="SurfaceHoverColor">#E0D8CA</Color>
-    <Color x:Key="SurfacePressedColor">#D9D0C2</Color>
-    <Color x:Key="SurfaceBorderColor">#D3C8B8</Color>
-    <Color x:Key="DividerColor">#DBD1C4</Color>
-    <Color x:Key="HeroStartColor">#F7EFE1</Color>
-    <Color x:Key="HeroEndColor">#EEE6DB</Color>
-    <Color x:Key="AccentColor">#B06A11</Color>
-    <Color x:Key="AccentSoftColor">#F8E4C8</Color>
-    <Color x:Key="SuccessColor">#2B8F6B</Color>
+    <Color x:Key="PanelGlassColor">#F2FFFFFF</Color>
+    <Color x:Key="SurfaceColor">#F4EDE4</Color>
+    <Color x:Key="SurfaceStrongColor">#ECE2D6</Color>
+    <Color x:Key="SurfaceHoverColor">#E6D8C8</Color>
+    <Color x:Key="SurfacePressedColor">#DAC8B4</Color>
+    <Color x:Key="SurfaceBorderColor">#CCBAA5</Color>
+    <Color x:Key="DividerColor">#DED0C0</Color>
+    <Color x:Key="HeroStartColor">#FFF9EF</Color>
+    <Color x:Key="HeroEndColor">#F2E6D8</Color>
+    <Color x:Key="AccentColor">#9B5A10</Color>
+    <Color x:Key="AccentSoftColor">#F4DFC2</Color>
+    <Color x:Key="AccentForegroundColor">#FFFFFF</Color>
+    <Color x:Key="SuccessColor">#247A5C</Color>
+    <Color x:Key="WarningColor">#456C95</Color>
+    <Color x:Key="DangerColor">#9D4E38</Color>
+    <Color x:Key="MediaOverlayColor">#C80C121A</Color>
+    <Color x:Key="MediaOverlayTextColor">#FFFFFF</Color>
+    <Color x:Key="MediaBadgeInfoColor">#D5456C95</Color>
+    <Color x:Key="MediaBadgeSuccessColor">#D5247A5C</Color>
+    <Color x:Key="MediaBadgeDangerColor">#D59D4E38</Color>
+    <Color x:Key="MediaBadgeTextColor">#FFFFFF</Color>
+    <Color x:Key="ShadowColor">#6B4B2D</Color>
+    <sys:Double x:Key="PanelShadowOpacity">0.12</sys:Double>
+    <sys:Double x:Key="CardShadowOpacity">0.08</sys:Double>
     <Color x:Key="TextColor">#17212D</Color>
-    <Color x:Key="TextMutedColor">#5A6775</Color>
-    <Color x:Key="TextSubtleColor">#7A8792</Color>
+    <Color x:Key="TextMutedColor">#556272</Color>
+    <Color x:Key="TextSubtleColor">#778494</Color>
+
+    <LinearGradientBrush x:Key="WindowBackgroundBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource WindowColor}" Offset="0" />
+        <GradientStop Color="{StaticResource WindowOverlayColor}" Offset="0.58" />
+        <GradientStop Color="{StaticResource WindowDepthColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="HeroPanelBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource HeroStartColor}" Offset="0" />
+        <GradientStop Color="{StaticResource HeroEndColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <SolidColorBrush x:Key="WindowBrush" Color="{StaticResource WindowColor}" />
+    <SolidColorBrush x:Key="PanelBrush" Color="{StaticResource PanelColor}" />
+    <SolidColorBrush x:Key="PanelAltBrush" Color="{StaticResource PanelElevatedColor}" />
+    <SolidColorBrush x:Key="PanelGlassBrush" Color="{StaticResource PanelGlassColor}" />
+    <SolidColorBrush x:Key="ControlBrush" Color="{StaticResource SurfaceColor}" />
+    <SolidColorBrush x:Key="ControlStrongBrush" Color="{StaticResource SurfaceStrongColor}" />
+    <SolidColorBrush x:Key="ControlHoverBrush" Color="{StaticResource SurfaceHoverColor}" />
+    <SolidColorBrush x:Key="ControlPressedBrush" Color="{StaticResource SurfacePressedColor}" />
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="{StaticResource SurfaceBorderColor}" />
+    <SolidColorBrush x:Key="DividerBrush" Color="{StaticResource DividerColor}" />
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="AccentSoftBrush" Color="{StaticResource AccentSoftColor}" />
+    <SolidColorBrush x:Key="AccentForegroundBrush" Color="{StaticResource AccentForegroundColor}" />
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}" />
+    <SolidColorBrush x:Key="MutedBrush" Color="{StaticResource TextMutedColor}" />
+    <SolidColorBrush x:Key="SubtleBrush" Color="{StaticResource TextSubtleColor}" />
+    <SolidColorBrush x:Key="SelectionBrush" Color="{StaticResource AccentSoftColor}" />
+    <SolidColorBrush x:Key="SelectionBorderBrush" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}" />
+    <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningColor}" />
+    <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource DangerColor}" />
+    <SolidColorBrush x:Key="MediaOverlayBrush" Color="{StaticResource MediaOverlayColor}" />
+    <SolidColorBrush x:Key="MediaOverlayTextBrush" Color="{StaticResource MediaOverlayTextColor}" />
+    <SolidColorBrush x:Key="MediaBadgeInfoBrush" Color="{StaticResource MediaBadgeInfoColor}" />
+    <SolidColorBrush x:Key="MediaBadgeSuccessBrush" Color="{StaticResource MediaBadgeSuccessColor}" />
+    <SolidColorBrush x:Key="MediaBadgeDangerBrush" Color="{StaticResource MediaBadgeDangerColor}" />
+    <SolidColorBrush x:Key="MediaBadgeTextBrush" Color="{StaticResource MediaBadgeTextColor}" />
+
+    <DropShadowEffect x:Key="PanelShadow" BlurRadius="34" ShadowDepth="0" Opacity="{StaticResource PanelShadowOpacity}" Color="{StaticResource ShadowColor}" />
+    <DropShadowEffect x:Key="CardShadow" BlurRadius="22" ShadowDepth="0" Opacity="{StaticResource CardShadowOpacity}" Color="{StaticResource ShadowColor}" />
 </ResourceDictionary>

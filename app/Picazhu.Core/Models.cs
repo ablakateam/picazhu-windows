@@ -182,6 +182,9 @@ public sealed record AppSettings
     public string? OpenAiVisionModel { get; init; }
     public string? OllamaEndpoint { get; init; } = "http://localhost:11434";
     public string? OllamaVisionModel { get; init; }
+    public string? OllamaCloudEndpoint { get; init; } = "https://ollama.com";
+    public string? OllamaCloudApiKeyPlaceholder { get; init; }
+    public string? OllamaCloudVisionModel { get; init; }
     public string? LmStudioEndpoint { get; init; } = "http://localhost:1234/v1";
     public string? LmStudioVisionModel { get; init; }
 }

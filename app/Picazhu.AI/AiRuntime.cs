@@ -36,13 +36,30 @@ public sealed class AiProviderStatusService(IEnumerable<IAiProvider> providers) 
 {
     public async Task<IReadOnlyList<AiProviderStatusSnapshot>> GetStatusesAsync(AppSettings settings, CancellationToken cancellationToken = default)
     {
-        var statuses = new List<AiProviderStatusSnapshot>();
-        foreach (var provider in providers.OrderBy(item => item.GetProviderInfo().DisplayName, StringComparer.OrdinalIgnoreCase))
-        {
-            statuses.Add(await provider.GetStatusAsync(settings, cancellationToken));
-        }
+        var tasks = providers
+            .OrderBy(item => item.GetProviderInfo().DisplayName, StringComparer.OrdinalIgnoreCase)
+            .Select(async provider =>
+            {
+                var info = provider.GetProviderInfo();
+                try
+                {
+                    return await provider.GetStatusAsync(settings, cancellationToken);
+                }
+                catch (Exception ex)
+                {
+                    return new AiProviderStatusSnapshot(
+                        info.ProviderId,
+                        info.DisplayName,
+                        false,
+                        false,
+                        info.SupportsVision,
+                        info.SupportsEmbeddings,
+                        $"Status check failed: {ex.Message}");
+                }
+            })
+            .ToArray();
 
-        return statuses;
+        return await Task.WhenAll(tasks);
     }
 }
 

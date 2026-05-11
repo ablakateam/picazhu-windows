@@ -8,12 +8,12 @@
         MinHeight="620"
         WindowStartupLocation="CenterOwner"
         ResizeMode="CanResize"
-        Background="{StaticResource WindowBrush}"
-        Foreground="{StaticResource TextBrush}">
+        Background="{DynamicResource WindowBrush}"
+        Foreground="{DynamicResource TextBrush}">
     <Window.Resources>
         <Style x:Key="SettingsCardStyle" TargetType="{x:Type Border}">
-            <Setter Property="Background" Value="{StaticResource PanelGlassBrush}" />
-            <Setter Property="BorderBrush" Value="{StaticResource DividerBrush}" />
+            <Setter Property="Background" Value="{DynamicResource PanelGlassBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource DividerBrush}" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="CornerRadius" Value="22" />
             <Setter Property="Padding" Value="22" />
@@ -22,7 +22,7 @@
 
         <Style x:Key="SettingsLabelStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
@@ -33,14 +33,14 @@
         </Style>
 
         <Style x:Key="SettingsValueStyle" TargetType="{x:Type TextBlock}">
-            <Setter Property="Foreground" Value="{StaticResource MutedBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource MutedBrush}" />
             <Setter Property="FontSize" Value="12" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="LineHeight" Value="18" />
         </Style>
 
         <Style x:Key="SettingsToggleStyle" TargetType="{x:Type CheckBox}">
-            <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -54,15 +54,15 @@
                                     Width="18"
                                     Height="18"
                                     CornerRadius="5"
-                                    Background="{StaticResource ControlBrush}"
-                                    BorderBrush="{StaticResource ControlBorderBrush}"
+                                    Background="{DynamicResource ControlBrush}"
+                                    BorderBrush="{DynamicResource ControlBorderBrush}"
                                     BorderThickness="1"
                                     VerticalAlignment="Center">
                                 <TextBlock x:Name="Check"
                                            Text="&#xE73E;"
                                            FontFamily="{StaticResource IconFontFamily}"
                                            FontSize="10"
-                                           Foreground="#10161F"
+                                           Foreground="{DynamicResource AccentForegroundBrush}"
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            Visibility="Collapsed" />
@@ -73,12 +73,12 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Box" Property="Background" Value="{StaticResource AccentBrush}" />
-                                <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+                                <Setter TargetName="Box" Property="Background" Value="{DynamicResource AccentBrush}" />
+                                <Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
                                 <Setter TargetName="Check" Property="Visibility" Value="Visible" />
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Box" Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+                                <Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.45" />
@@ -91,8 +91,8 @@
     </Window.Resources>
 
     <Border Margin="16"
-            Background="{StaticResource WindowBackgroundBrush}"
-            BorderBrush="{StaticResource DividerBrush}"
+            Background="{DynamicResource WindowBackgroundBrush}"
+            BorderBrush="{DynamicResource DividerBrush}"
             BorderThickness="1"
             CornerRadius="24">
         <Grid Margin="24">
@@ -113,7 +113,7 @@
                     <TextBlock Text="General behavior, cache control, and AI provider configuration."
                                Style="{StaticResource SettingsHelpStyle}"
                                Margin="0,6,0,0" />
-                    <Border Background="{StaticResource AccentSoftBrush}"
+                    <Border Background="{DynamicResource AccentSoftBrush}"
                             CornerRadius="12"
                             Padding="12,7"
                             Margin="0,12,0,0"
@@ -122,7 +122,7 @@
                         <TextBlock Text="{Binding SettingsStatusText}"
                                    FontSize="12"
                                    FontWeight="SemiBold"
-                                   Foreground="{StaticResource AccentBrush}"
+                                   Foreground="{DynamicResource AccentBrush}"
                                    TextWrapping="Wrap" />
                     </Border>
                 </StackPanel>
@@ -137,7 +137,7 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="&#xE711;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" />
+                        <TextBlock Text="&#xE711;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" />
                         <TextBlock Grid.Column="1" Text="Close" TextTrimming="CharacterEllipsis" />
                     </Grid>
                 </Button>
@@ -158,7 +158,7 @@
                             </Grid.RowDefinitions>
 
                             <StackPanel>
-                                <TextBlock Text="Workspace" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{StaticResource AccentBrush}" />
+                                <TextBlock Text="Workspace" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
                                 <TextBlock Text="Browsing behavior" FontSize="19" FontWeight="SemiBold" Margin="0,8,0,0" />
                                 <TextBlock Text="Control the default browsing experience, theme, and thumbnail cache budget."
                                            Style="{StaticResource SettingsHelpStyle}"
@@ -208,14 +208,14 @@
                                              VerticalContentAlignment="Center" />
                                     <TextBlock Grid.Column="1"
                                                Text="MB"
-                                               Foreground="{StaticResource MutedBrush}"
+                                               Foreground="{DynamicResource MutedBrush}"
                                                VerticalAlignment="Center"
                                                Margin="12,0,0,0" />
                                 </Grid>
 
                                 <Border Grid.Row="6"
                                         Grid.ColumnSpan="2"
-                                        Background="{StaticResource PanelAltBrush}"
+                                        Background="{DynamicResource PanelAltBrush}"
                                         CornerRadius="16"
                                         Padding="16,14">
                                     <StackPanel>
@@ -236,12 +236,14 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="18" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="18" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
                             <StackPanel>
-                                <TextBlock Text="AI Providers" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{StaticResource AccentBrush}" />
+                                <TextBlock Text="AI Providers" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
                                 <TextBlock Text="Semantic analysis controls" FontSize="19" FontWeight="SemiBold" Margin="0,8,0,0" />
-                                <TextBlock Text="Enable AI only when you want background OCR and visual tagging. LM Studio is the active visual provider in this build."
+                                <TextBlock Text="Choose the active vision provider for tagging. AI remains fully optional; when disabled, providers are only tested from settings and no background analysis runs."
                                            Style="{StaticResource SettingsHelpStyle}"
                                            Margin="0,6,0,0" />
                             </StackPanel>
@@ -257,47 +259,31 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="16" />
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="16" />
-                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Row="0" Grid.Column="0" Text="AI runtime" Style="{StaticResource SettingsLabelStyle}" />
                                 <CheckBox Grid.Row="0"
                                           Grid.Column="1"
-                                          Content="Enable AI globally."
+                                          Content="Enable background OCR, visual tagging, and semantic indexing."
                                           Style="{StaticResource SettingsToggleStyle}"
                                           IsChecked="{Binding EnableAiGlobally}" />
 
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Vision provider" Style="{StaticResource SettingsLabelStyle}" />
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Active vision provider" Style="{StaticResource SettingsLabelStyle}" />
                                 <ComboBox Grid.Row="2"
                                           Grid.Column="1"
-                                          SelectedValue="{Binding AiVisionProviderId}"
-                                          SelectedValuePath="Tag"
-                                          MinHeight="42">
-                                    <ComboBoxItem Content="LM Studio" Tag="lmstudio" />
-                                </ComboBox>
+                                          ItemsSource="{Binding ProviderOptions}"
+                                          DisplayMemberPath="Name"
+                                          SelectedValuePath="Id"
+                                          SelectedValue="{Binding AiVisionProviderId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                          MinHeight="42" />
 
-                                <TextBlock Grid.Row="4" Grid.Column="0" Text="LM Studio model" Style="{StaticResource SettingsLabelStyle}" />
-                                <StackPanel Grid.Row="4" Grid.Column="1">
-                                    <ComboBox ItemsSource="{Binding LmStudioAvailableModels}"
-                                              SelectedItem="{Binding LmStudioVisionModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                              ToolTip="{Binding LmStudioVisionModel}"
-                                              IsEditable="False"
-                                              MinHeight="42" />
-                                    <TextBlock Text="{Binding ActiveAiModelSummary}"
-                                               Style="{StaticResource SettingsValueStyle}"
-                                               Foreground="{StaticResource AccentBrush}"
-                                               FontWeight="SemiBold"
-                                               Margin="0,8,0,0" />
-                                </StackPanel>
-
-                                <TextBlock Grid.Row="6" Grid.Column="0" Text="LM Studio endpoint" Style="{StaticResource SettingsLabelStyle}" />
-                                <TextBox Grid.Row="6"
-                                         Grid.Column="1"
-                                         Text="{Binding LmStudioEndpoint}"
-                                         ToolTip="{Binding LmStudioEndpoint}"
-                                         MinHeight="42"
-                                         VerticalContentAlignment="Center" />
+                                <TextBlock Grid.Row="4" Grid.Column="0" Text="Active model" Style="{StaticResource SettingsLabelStyle}" />
+                                <TextBlock Grid.Row="4"
+                                           Grid.Column="1"
+                                           Text="{Binding ActiveAiModelSummary}"
+                                           Style="{StaticResource SettingsValueStyle}"
+                                           Foreground="{DynamicResource AccentBrush}"
+                                           FontWeight="SemiBold" />
                             </Grid>
 
                             <Grid Grid.Row="4">
@@ -306,18 +292,122 @@
                                     <ColumnDefinition Width="16" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="16" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0"
+                                        Grid.Column="0"
+                                        Background="{DynamicResource PanelAltBrush}"
+                                        CornerRadius="16"
+                                        Padding="16,14">
+                                    <StackPanel>
+                                        <TextBlock Text="LM Studio" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
+                                        <TextBlock Text="OpenAI-compatible local server." Style="{StaticResource SettingsValueStyle}" Margin="0,6,0,10" />
+                                        <TextBlock Text="Endpoint" Style="{StaticResource SettingsLabelStyle}" Margin="0,0,0,6" />
+                                        <TextBox Text="{Binding LmStudioEndpoint}"
+                                                 ToolTip="{Binding LmStudioEndpoint}"
+                                                 MinHeight="40"
+                                                 VerticalContentAlignment="Center" />
+                                        <TextBlock Text="Vision model" Style="{StaticResource SettingsLabelStyle}" Margin="0,12,0,6" />
+                                        <ComboBox ItemsSource="{Binding LmStudioAvailableModels}"
+                                                  Text="{Binding LmStudioVisionModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  ToolTip="{Binding LmStudioVisionModel}"
+                                                  IsEditable="True"
+                                                  MinHeight="40" />
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Row="0"
+                                        Grid.Column="2"
+                                        Background="{DynamicResource PanelAltBrush}"
+                                        CornerRadius="16"
+                                        Padding="16,14">
+                                    <StackPanel>
+                                        <TextBlock Text="Ollama" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
+                                        <TextBlock Text="Local Ollama /api/chat vision models." Style="{StaticResource SettingsValueStyle}" Margin="0,6,0,10" />
+                                        <TextBlock Text="Endpoint" Style="{StaticResource SettingsLabelStyle}" Margin="0,0,0,6" />
+                                        <TextBox Text="{Binding OllamaEndpoint}"
+                                                 ToolTip="{Binding OllamaEndpoint}"
+                                                 MinHeight="40"
+                                                 VerticalContentAlignment="Center" />
+                                        <TextBlock Text="Vision model" Style="{StaticResource SettingsLabelStyle}" Margin="0,12,0,6" />
+                                        <ComboBox ItemsSource="{Binding OllamaAvailableModels}"
+                                                  Text="{Binding OllamaVisionModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  ToolTip="{Binding OllamaVisionModel}"
+                                                  IsEditable="True"
+                                                  MinHeight="40" />
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Row="2"
+                                        Grid.Column="0"
+                                        Background="{DynamicResource PanelAltBrush}"
+                                        CornerRadius="16"
+                                        Padding="16,14">
+                                    <StackPanel>
+                                        <TextBlock Text="Ollama Cloud" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
+                                        <TextBlock Text="Remote Ollama host with bearer API key. Keys are stored in local user settings." Style="{StaticResource SettingsValueStyle}" Margin="0,6,0,10" />
+                                        <TextBlock Text="Endpoint" Style="{StaticResource SettingsLabelStyle}" Margin="0,0,0,6" />
+                                        <TextBox Text="{Binding OllamaCloudEndpoint}"
+                                                 ToolTip="{Binding OllamaCloudEndpoint}"
+                                                 MinHeight="40"
+                                                 VerticalContentAlignment="Center" />
+                                        <TextBlock Text="API key" Style="{StaticResource SettingsLabelStyle}" Margin="0,12,0,6" />
+                                        <TextBox Text="{Binding OllamaCloudApiKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 MinHeight="40"
+                                                 VerticalContentAlignment="Center" />
+                                        <TextBlock Text="Vision model" Style="{StaticResource SettingsLabelStyle}" Margin="0,12,0,6" />
+                                        <ComboBox ItemsSource="{Binding OllamaCloudAvailableModels}"
+                                                  Text="{Binding OllamaCloudVisionModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  ToolTip="{Binding OllamaCloudVisionModel}"
+                                                  IsEditable="True"
+                                                  MinHeight="40" />
+                                    </StackPanel>
+                                </Border>
+
+                                <Border Grid.Row="2"
+                                        Grid.Column="2"
+                                        Background="{DynamicResource PanelAltBrush}"
+                                        CornerRadius="16"
+                                        Padding="16,14">
+                                    <StackPanel>
+                                        <TextBlock Text="OpenAI" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{DynamicResource AccentBrush}" />
+                                        <TextBlock Text="OpenAI Chat Completions vision with data-url image input. Keys are stored in local user settings." Style="{StaticResource SettingsValueStyle}" Margin="0,6,0,10" />
+                                        <TextBlock Text="API key" Style="{StaticResource SettingsLabelStyle}" Margin="0,0,0,6" />
+                                        <TextBox Text="{Binding OpenAiApiKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 MinHeight="40"
+                                                 VerticalContentAlignment="Center" />
+                                        <TextBlock Text="Vision model" Style="{StaticResource SettingsLabelStyle}" Margin="0,12,0,6" />
+                                        <ComboBox ItemsSource="{Binding OpenAiAvailableModels}"
+                                                  Text="{Binding OpenAiVisionModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                  ToolTip="{Binding OpenAiVisionModel}"
+                                                  IsEditable="True"
+                                                  MinHeight="40" />
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Row="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="16" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
                                 <Border Grid.Column="0"
-                                        Background="{StaticResource PanelAltBrush}"
+                                        Background="{DynamicResource PanelAltBrush}"
                                         CornerRadius="16"
                                         Padding="16,14">
                                     <StackPanel>
                                         <TextBlock Text="Provider readiness" Style="{StaticResource SidebarSectionTitleStyle}" />
-                                        <Border Background="{StaticResource AccentSoftBrush}" CornerRadius="12" Padding="12,8" Margin="0,10,0,0">
+                                        <Border Background="{DynamicResource AccentSoftBrush}" CornerRadius="12" Padding="12,8" Margin="0,10,0,0">
                                             <TextBlock Text="{Binding ConnectionTestStatusText}"
                                                        FontSize="12"
                                                        FontWeight="SemiBold"
-                                                       Foreground="{StaticResource AccentBrush}"
+                                                       Foreground="{DynamicResource AccentBrush}"
                                                        TextWrapping="Wrap"
                                                        LineHeight="18" />
                                         </Border>
@@ -326,7 +416,7 @@
                                 </Border>
 
                                 <Border Grid.Column="2"
-                                        Background="{StaticResource PanelAltBrush}"
+                                        Background="{DynamicResource PanelAltBrush}"
                                         CornerRadius="16"
                                         Padding="16,14">
                                     <StackPanel>
@@ -342,20 +432,6 @@
                                 </Border>
                             </Grid>
                         </Grid>
-                    </Border>
-
-                    <Border Background="{StaticResource PanelGlassBrush}"
-                            BorderBrush="{StaticResource DividerBrush}"
-                            BorderThickness="1"
-                            CornerRadius="18"
-                            Padding="18"
-                            Margin="0,0,0,4">
-                        <StackPanel>
-                            <TextBlock Text="Future providers" Style="{StaticResource SidebarSectionTitleStyle}" Foreground="{StaticResource AccentBrush}" />
-                            <TextBlock Text="Ollama and OpenAI vision execution are intentionally labeled as future providers in this build. LM Studio is the only active visual-tagging provider exposed for QA and product testing."
-                                       Style="{StaticResource SettingsHelpStyle}"
-                                       Margin="0,8,0,0" />
-                        </StackPanel>
                     </Border>
                 </StackPanel>
             </ScrollViewer>
@@ -384,7 +460,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="&#xE72C;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" />
+                            <TextBlock Text="&#xE72C;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" />
                             <TextBlock Grid.Column="1" Text="Test Connections" TextTrimming="CharacterEllipsis" />
                         </Grid>
                     </Button>
@@ -397,7 +473,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="&#xE74E;" Style="{StaticResource IconTextBlockStyle}" Margin="0,0,8,0" />
+                            <TextBlock Text="&#xE74E;" Style="{StaticResource ButtonIconTextBlockStyle}" Margin="0,0,8,0" />
                             <TextBlock Grid.Column="1" Text="Save Settings" TextTrimming="CharacterEllipsis" />
                         </Grid>
                     </Button>

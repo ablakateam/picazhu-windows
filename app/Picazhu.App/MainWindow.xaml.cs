@@ -24,16 +24,18 @@ public partial class MainWindow : Window
     private readonly MainViewModel _viewModel;
     private readonly IPhoneImportService _phoneImportService;
     private readonly IAppPaths _appPaths;
+    private readonly IAiProviderStatusService _aiProviderStatusService;
     private readonly DispatcherTimer _refreshTimer = new() { Interval = TimeSpan.FromSeconds(5) };
     private bool _refreshDiagnosticsInFlight;
     private bool _syncingMediaSelection;
     private ShellLayoutMode? _shellLayoutMode;
 
-    public MainWindow(MainViewModel viewModel, IPhoneImportService phoneImportService, IAppPaths appPaths)
+    public MainWindow(MainViewModel viewModel, IPhoneImportService phoneImportService, IAppPaths appPaths, IAiProviderStatusService aiProviderStatusService)
     {
         _viewModel = viewModel;
         _phoneImportService = phoneImportService;
         _appPaths = appPaths;
+        _aiProviderStatusService = aiProviderStatusService;
         InitializeComponent();
         DataContext = _viewModel;
         _viewModel.MediaItemsRefreshed += RestoreMediaSelectionFromViewModel;
@@ -125,7 +127,7 @@ public partial class MainWindow : Window
     private async void PinFolder_Click(object sender, RoutedEventArgs e) => await _viewModel.TogglePinSelectedFolderAsync();
     private async void SaveSearch_Click(object sender, RoutedEventArgs e) => await _viewModel.SaveCurrentSearchAsync();
     private async void ToggleAiFeatures_Click(object sender, RoutedEventArgs e) => await _viewModel.ToggleAiFeaturesAsync();
-    private async void OpenSettings_Click(object sender, RoutedEventArgs e)
+    private void OpenSettings_Click(object sender, RoutedEventArgs e)
     {
         var wasRunning = _refreshTimer.IsEnabled;
         if (wasRunning)
@@ -135,8 +137,7 @@ public partial class MainWindow : Window
 
         try
         {
-            var window = new SettingsWindow(_viewModel) { Owner = this };
-            await window.InitializeAsync();
+            var window = new SettingsWindow(_viewModel, _aiProviderStatusService) { Owner = this };
             window.ShowDialog();
         }
         finally
