@@ -234,6 +234,7 @@ See:
 - `STATUS.md`
 - `PROGRESS.md`
 - `DISTRIBUTION.md`
+- GitHub Wiki: https://github.com/ablakateam/picazhu-windows/wiki
 
 ## Roadmap
 

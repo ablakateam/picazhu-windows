@@ -7,6 +7,7 @@ This document describes the intended Windows release workflow.
 PICAZHU for Windows should be distributed as:
 
 - GitHub repository: source code, docs, installer script, build scripts.
+- GitHub Wiki: roadmap, current status, release process, AI/performance notes, troubleshooting, and milestones.
 - GitHub Release assets:
   - `PICAZHU-Windows-Setup-0.1.2-alpha.exe`
   - `PICAZHU-Windows-portable-0.1.2-alpha.zip`
@@ -61,6 +62,17 @@ Use `-IncludePortableRelease` only when you want the generated release files cop
 - Confirm no sensitive or local-only files are included in the staged GitHub repo.
 - Confirm the portable zip does not contain `.pdb` debug files.
 - Upload installer, portable zip, and checksums to GitHub Releases.
+- Update README, `STATUS.md`, `PROGRESS.md`, `DISTRIBUTION.md`, and the GitHub Wiki when release scope or known limitations change.
+
+## Wiki Updates
+
+The GitHub Wiki is maintained through the separate wiki git remote:
+
+```powershell
+git clone https://github.com/ablakateam/picazhu-windows.wiki.git
+```
+
+GitHub may require the first wiki page to be created in the browser before the `.wiki.git` remote exists. After that, wiki pages can be updated with normal git commits and pushes.
 
 ## Signing
 

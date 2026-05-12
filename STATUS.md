@@ -17,6 +17,7 @@
 - Portable zip excludes debug `.pdb` files.
 - Microsoft Defender scan found no threats in the generated `0.1.2-alpha` release folder.
 - Clean GitHub source staging excludes build output, logs, local databases, screenshots, recordings, and temp files.
+- GitHub Wiki is initialized and published with status, roadmap, release process, AI/performance notes, troubleshooting, and milestone pages.
 - Settings popup layout has been refined so labels, model IDs, provider status, and footer actions remain readable instead of clipping.
 - Settings now opens immediately; provider connection checks run after the dialog is visible instead of blocking the window.
 - Light and dark themes now share a tested semantic resource contract, with no hard-coded color literals in non-theme app XAML.
@@ -57,6 +58,5 @@
 
 - End-to-end install/uninstall test on a clean Windows user profile.
 - Signed installer build.
-- GitHub Release asset upload.
-- User-facing screenshots for README.
+- Keep GitHub Wiki, README, `STATUS.md`, `PROGRESS.md`, and `DISTRIBUTION.md` synchronized after meaningful changes.
 - Manual smoke-test checklist recorded in release notes.

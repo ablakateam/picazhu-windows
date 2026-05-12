@@ -27,12 +27,13 @@ PICAZHU is now a working local-first Windows desktop media browser with:
 - post-redesign QA hardening for folder query boundaries, large-folder scan resilience, UI exception containment, cache maintenance, and AI queue duplicate suppression
 - MediaDevices-backed iPhone import with DCIM-only filtering, duplicate skipping, preserved folder layout, progress, cancellation, and automatic add/index after import
 - Windows release packaging with native installer, portable zip, checksums, and clean GitHub staging workflow
+- published GitHub Wiki with status, roadmap, release process, AI/performance notes, troubleshooting, and milestone documentation
 
 Published build output:
 
 - `publish/Picazhu.App-win-x64/Picazhu.App.exe`
-- `release/PICAZHU-Windows-Setup-0.1.1-alpha.exe`
-- `release/PICAZHU-Windows-portable-0.1.1-alpha.zip`
+- `release/PICAZHU-Windows-Setup-0.1.2-alpha.exe`
+- `release/PICAZHU-Windows-portable-0.1.2-alpha.zip`
 
 ## Milestones
 
@@ -733,6 +734,37 @@ Date: May 11, 2026
 - Build native installer and portable zip.
 - Generate `SHA256SUMS.txt`.
 - Stage clean GitHub source and push from `release/github-picazhu-windows`.
+
+## Milestone: GitHub Wiki Documentation Published
+
+Date: May 12, 2026
+
+### What Changed
+
+- Initialized and published the `picazhu-windows` GitHub Wiki.
+- Added a wiki sidebar and first documentation set:
+  - `Home`
+  - `Current Status`
+  - `Roadmap`
+  - `Release Process`
+  - `AI and Performance`
+  - `Troubleshooting`
+  - `Milestones`
+- Synced the wiki structure with the repository docs so the README remains the public landing page while the wiki carries living project documentation.
+- Recorded the wiki publication workflow:
+  - GitHub Wiki must be initialized once in the browser before `.wiki.git` accepts pushes.
+  - After initialization, the wiki is maintained as a normal git remote at `https://github.com/ablakateam/picazhu-windows.wiki.git`.
+
+### Why It Matters
+
+- Product status, roadmap, release process, AI behavior, troubleshooting, and lessons learned now have a dedicated GitHub documentation surface.
+- Future changes can be documented in both the repo and wiki as part of the normal release routine.
+- The wiki gives testers and collaborators a cleaner place to understand current capabilities and known open areas without digging through the whole source tree.
+
+### Lessons Learned
+
+- GitHub wikis are backed by a separate `.wiki.git` repository, but that repository may return `Repository not found` until the first wiki page is created in the GitHub UI.
+- The wiki should summarize the project and link back to source docs rather than duplicating every implementation detail from `PROGRESS.md`.
 
 ## Known Open Areas
 
